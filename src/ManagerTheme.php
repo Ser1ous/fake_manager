@@ -304,7 +304,7 @@ class ManagerTheme implements ManagerThemeInterface
         $_style = [];
         $modx = $this->core;
         $_lang = $this->getLexicon();
-        include_once $this->getThemeDir(true) . 'style.php';
+        include_once $this->getThemeStyleDir(true) . 'style.php';
         $this->style = $_style;
     }
 
@@ -314,7 +314,16 @@ class ManagerTheme implements ManagerThemeInterface
      */
     public function getThemeDir($full = true): string
     {
-        return ($full ? MODX_MANAGER_PATH : '') . 'media/style/' . $this->getTheme() . '/';
+        return ($full ? 'manager_theme' : '') . '/media/style/' . $this->getTheme() . '/';
+    }
+
+    /**
+     * @param bool $full
+     * @return string
+     */
+    public function getThemeStyleDir($full = true): string
+    {
+        return ($full ? EVO_CORE_PATH : '') . 'storage/manager/media/style/' . $this->getTheme() . '/';
     }
 
     public function getThemeUrl(): string
@@ -399,7 +408,7 @@ class ManagerTheme implements ManagerThemeInterface
 
         Route::middleware('mgr')
             ->namespace('\\EvolutionCMS\\Controllers')
-            ->group(MODX_MANAGER_PATH . '/routes.php');
+            ->group(MODX_BASE_PATH . 'routes/mgr.php');
 
         $routes = $evo->router->getRoutes();
         $routes->refreshNameLookups();

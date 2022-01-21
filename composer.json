@@ -19,7 +19,9 @@
   },
   "extra": {
     "laravel": {
-
+      "providers": [
+        "EvolutionCMS\\Manager\\Providers\\ManagerThemeServiceProvider"
+      ]
     }
   }
 }
