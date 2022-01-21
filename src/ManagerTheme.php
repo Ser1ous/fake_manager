@@ -7,7 +7,7 @@ use EvolutionCMS\Controllers\UserRoles\UserRole;
 use EvolutionCMS\Controllers\Users\ChangePassword;
 use EvolutionCMS\Exceptions\ServiceValidationException;
 use EvolutionCMS\Manager\Interfaces\ManagerThemeInterface;
-use EvolutionCMS\Manager\Interfaces\CoreInterface;
+use EvolutionCMS\Interfaces\CoreInterface;
 use EvolutionCMS\Models\ActiveUser;
 use EvolutionCMS\Models\UserAttribute;
 use Illuminate\Http\Request;
