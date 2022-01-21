@@ -1,6 +1,6 @@
 <?php namespace EvolutionCMS\Manager\Interfaces\ManagerTheme;
 
-use EvolutionCMS\Interfaces\ManagerThemeInterface;
+use EvolutionCMS\Manager\Interfaces\ManagerThemeInterface;
 
 interface ControllerInterface
 {

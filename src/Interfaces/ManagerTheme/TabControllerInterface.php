@@ -1,4 +1,4 @@
-<?php namespace EvolutionCMS\Interfaces\ManagerTheme;
+<?php namespace EvolutionCMS\Manager\Interfaces\ManagerTheme;
 
 interface TabControllerInterface extends ControllerInterface
 {

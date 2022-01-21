@@ -1,8 +1,10 @@
 <?php namespace EvolutionCMS\Manager\Interfaces;
 
+use EvolutionCMS\Interfaces\CoreInterface;
+
 interface ManagerThemeInterface
 {
-    public function getCore() : EvolutionCMS\CoreInterface;
+    public function getCore() : CoreInterface;
 
     public function getLang() : string;
 
