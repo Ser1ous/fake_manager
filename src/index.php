@@ -73,33 +73,6 @@ if (! defined('IN_PARSER_MODE')) {
     define('IN_PARSER_MODE', false);
 }
 
-if (file_exists(__DIR__ . '/config.php')) {
-    $config = require __DIR__ . '/config.php';
-} elseif (file_exists(dirname(__DIR__) . '/config.php')) {
-    $config = require dirname(__DIR__) . '/config.php';
-} else {
-    $config = [
-        'core' => dirname(__DIR__) . '/core'
-    ];
-}
-
-if (!empty($config['core']) && file_exists($config['core'] . '/.install')) {
-    require_once $config['core'] . '/bootstrap.php';
-} else {
-    header('HTTP/1.1 503 Service Temporarily Unavailable');
-    header('Status: 503 Service Temporarily Unavailable');
-    header('Retry-After: 3600');
-
-    echo '<h3>Unable to load configuration settings</h3>';
-    echo 'Please run the Evolution CMS install utility';
-
-    exit;
-}
-
-if (!isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-    header('HTTP/1.0 404 Not Found');
-    exit;
-}
 
 // send anti caching headers
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
