@@ -5,6 +5,7 @@ use EvolutionCMS\Controllers\UserRoles\PermissionsGroups;
 use EvolutionCMS\Controllers\UserRoles\RoleManagment;
 use EvolutionCMS\Controllers\UserRoles\UserRole;
 use EvolutionCMS\Controllers\Users\ChangePassword;
+use EvolutionCMS\Controllers\Users\LogInOut;
 use EvolutionCMS\Exceptions\ServiceValidationException;
 use EvolutionCMS\Manager\Interfaces\ManagerThemeInterface;
 use EvolutionCMS\Interfaces\CoreInterface;
@@ -56,7 +57,7 @@ class ManagerTheme implements ManagerThemeInterface
         7,
         /** let the user log out */
         8 => Controllers\Users\LogInOut::class,
-        0 => Controllers\Users\LogInOut::class,
+        0 => LogInOut::class,
         /** user management */
         87,
         88,
@@ -314,7 +315,7 @@ class ManagerTheme implements ManagerThemeInterface
      */
     public function getThemeDir($full = true): string
     {
-        return ($full ? 'manager_theme' : '') . '/media/style/' . $this->getTheme() . '/';
+        return ($full ? '/manager_theme' : '') . '/media/style/' . $this->getTheme() . '/';
     }
 
     /**
@@ -324,6 +325,15 @@ class ManagerTheme implements ManagerThemeInterface
     public function getThemeStyleDir($full = true): string
     {
         return ($full ? EVO_CORE_PATH : '') . 'storage/manager/media/style/' . $this->getTheme() . '/';
+    }
+
+    /**
+     * @param bool $full
+     * @return string
+     */
+    public function getThemeBaseStyleDir($full = true): string
+    {
+        return ($full ? EVO_CORE_PATH : '') . 'storage/manager/';
     }
 
     public function getThemeUrl(): string
@@ -596,7 +606,7 @@ class ManagerTheme implements ManagerThemeInterface
                 $target = $this->getThemeDir() . 'html/' . $name . '.html';
                 $content = file_get_contents($target);
             } else {
-                $target = MODX_MANAGER_PATH . 'media/style/common/' . $name . '.tpl';
+                $target = $this->getThemeStyleDir() . '/' . $name . '.tpl';
                 $content = file_get_contents($target);
             }
         }
@@ -647,7 +657,7 @@ class ManagerTheme implements ManagerThemeInterface
                 $plh['login_logo'] = MODX_SITE_URL . $logo;
             }
         } else {
-            $plh['login_logo'] = $this->getThemeUrl() . 'images/login/default/login-logo.png';
+            $plh['login_logo'] = $this->getThemeDir() . 'images/login/default/login-logo.png';
         }
 
         // set login background image
@@ -661,7 +671,7 @@ class ManagerTheme implements ManagerThemeInterface
 
             $plh['login_bg'] = MODX_SITE_URL . $background;
         } else {
-            $plh['login_bg'] = $this->getThemeUrl() . 'images/login/default/login-background.jpg';
+            $plh['login_bg'] = $this->getThemeDir() . 'images/login/default/login-background.jpg';
         }
         unset($background);
 
