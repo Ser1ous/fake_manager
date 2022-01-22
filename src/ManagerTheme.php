@@ -1,11 +1,11 @@
 <?php namespace EvolutionCMS\Manager;
 
-use EvolutionCMS\Controllers\UserRoles\Permission;
-use EvolutionCMS\Controllers\UserRoles\PermissionsGroups;
-use EvolutionCMS\Controllers\UserRoles\RoleManagment;
-use EvolutionCMS\Controllers\UserRoles\UserRole;
-use EvolutionCMS\Controllers\Users\ChangePassword;
-use EvolutionCMS\Controllers\Users\LogInOut;
+use EvolutionCMS\Manager\Controllers\UserRoles\Permission;
+use EvolutionCMS\Manager\Controllers\UserRoles\PermissionsGroups;
+use EvolutionCMS\Manager\Controllers\UserRoles\RoleManagment;
+use EvolutionCMS\Manager\Controllers\UserRoles\UserRole;
+use EvolutionCMS\Manager\Controllers\Users\ChangePassword;
+use EvolutionCMS\Manager\Controllers\Users\LogInOut;
 use EvolutionCMS\Exceptions\ServiceValidationException;
 use EvolutionCMS\Manager\Interfaces\ManagerThemeInterface;
 use EvolutionCMS\Interfaces\CoreInterface;
@@ -56,7 +56,7 @@ class ManagerTheme implements ManagerThemeInterface
         /** show the wait page - gives the tree time to refresh (hopefully) */
         7,
         /** let the user log out */
-        8 => Controllers\Users\LogInOut::class,
+        8 => LogInOut::class,
         0 => LogInOut::class,
         /** user management */
         87,
