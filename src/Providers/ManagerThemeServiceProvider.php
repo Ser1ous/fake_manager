@@ -16,6 +16,15 @@ class ManagerThemeServiceProvider extends ServiceProvider
     protected $namespace = 'manager';
 
     /**
+     * @return void
+     * Register view for manager
+     */
+    public function boot()
+    {
+        $this->loadViewsFrom(__DIR__ . '/../../views', $this->namespace);
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void
