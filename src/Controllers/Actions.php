@@ -1,6 +1,6 @@
 <?php
 
-namespace EvolutionCMS\Controllers;
+namespace EvolutionCMS\Manager\Controllers;
 
 use EvolutionCMS\Manager\Interfaces\ManagerTheme;
 use Illuminate\Http\Response;

@@ -1,4 +1,4 @@
-<?php namespace EvolutionCMS\Controllers;
+<?php namespace EvolutionCMS\Manager\Controllers;
 
 use EvolutionCMS\Manager\Interfaces\ManagerTheme\ControllerInterface;
 use EvolutionCMS\Manager\Interfaces\ManagerThemeInterface;

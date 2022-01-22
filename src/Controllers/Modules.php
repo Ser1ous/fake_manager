@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EvolutionCMS\Controllers;
+namespace EvolutionCMS\Manager\Controllers;
 
 use EvolutionCMS\Interfaces\ManagerTheme;
 use EvolutionCMS\Models\Category;

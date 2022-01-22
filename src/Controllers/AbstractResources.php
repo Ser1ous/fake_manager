@@ -1,4 +1,4 @@
-<?php namespace EvolutionCMS\Controllers;
+<?php namespace EvolutionCMS\Manager\Controllers;
 
 use Illuminate\Support\Arr;
 
