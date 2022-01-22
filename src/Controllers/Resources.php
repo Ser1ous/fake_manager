@@ -1,6 +1,6 @@
 <?php namespace EvolutionCMS\Manager\Controllers;
 
-use EvolutionCMS\Interfaces\ManagerTheme;
+use EvolutionCMS\Manager\Interfaces\ManagerTheme;
 use Illuminate\Support\Arr;
 
 class Resources extends AbstractResources implements ManagerTheme\PageControllerInterface

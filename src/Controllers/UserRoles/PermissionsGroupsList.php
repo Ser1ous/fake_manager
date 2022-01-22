@@ -1,10 +1,10 @@
 <?php namespace EvolutionCMS\Manager\Controllers\UserRoles;
 
-use EvolutionCMS\Controllers\AbstractController;
+use EvolutionCMS\Manager\Controllers\AbstractController;
 use EvolutionCMS\Controllers\AbstractResources;
 use EvolutionCMS\Interfaces\ManagerTheme\TabControllerInterface;
 use EvolutionCMS\Models;
-use EvolutionCMS\Interfaces\ManagerTheme;
+use EvolutionCMS\Manager\Interfaces\ManagerTheme;
 
 class PermissionsGroupsList extends AbstractResources implements TabControllerInterface
 {

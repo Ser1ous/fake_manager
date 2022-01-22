@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EvolutionCMS\Manager\Controllers;
 
-use EvolutionCMS\Interfaces\ManagerTheme;
+use EvolutionCMS\Manager\Interfaces\ManagerTheme;
 use EvolutionCMS\Models\Category;
 use EvolutionCMS\Support\ContextMenu;
 use Illuminate\Database\Eloquent\Builder;

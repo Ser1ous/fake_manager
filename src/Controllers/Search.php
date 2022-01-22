@@ -1,6 +1,6 @@
 <?php namespace EvolutionCMS\Manager\Controllers;
 
-use EvolutionCMS\Interfaces\ManagerTheme;
+use EvolutionCMS\Manager\Interfaces\ManagerTheme;
 use EvolutionCMS\Models\SiteContent;
 use EvolutionCMS\Models\SiteHtmlsnippet;
 use EvolutionCMS\Models\SiteModule;

@@ -1,6 +1,6 @@
 <?php namespace EvolutionCMS\Manager\Controllers;
 
-use EvolutionCMS\Interfaces\ManagerTheme;
+use EvolutionCMS\Manager\Interfaces\ManagerTheme;
 use EvolutionCMS\Interfaces\ManagerThemeInterface;
 use EvolutionCMS\Models;
 use EvolutionCMS\Models\ClosureTable;

@@ -1,10 +1,10 @@
 <?php namespace EvolutionCMS\Manager\Controllers\Users;
 
-use EvolutionCMS\Controllers\AbstractController;
+use EvolutionCMS\Manager\Controllers\AbstractController;
 use EvolutionCMS\Exceptions\ServiceActionException;
 use EvolutionCMS\Exceptions\ServiceValidationException;
 use EvolutionCMS\Models;
-use EvolutionCMS\Interfaces\ManagerTheme;
+use EvolutionCMS\Manager\Interfaces\ManagerTheme;
 
 class EditOrNewUser extends AbstractController implements ManagerTheme\PageControllerInterface
 {

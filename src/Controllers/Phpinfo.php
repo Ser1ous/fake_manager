@@ -1,7 +1,7 @@
 <?php namespace EvolutionCMS\Manager\Controllers;
 
 use EvolutionCMS\Interfaces\ManagerThemeInterface;
-use EvolutionCMS\Interfaces\ManagerTheme;
+use EvolutionCMS\Manager\Interfaces\ManagerTheme;
 use Illuminate\Support\Collection;
 
 class Phpinfo extends AbstractController implements ManagerTheme\PageControllerInterface

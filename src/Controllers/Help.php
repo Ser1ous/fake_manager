@@ -1,7 +1,7 @@
 <?php namespace EvolutionCMS\Manager\Controllers;
 
 use EvolutionCMS\Models;
-use EvolutionCMS\Interfaces\ManagerTheme;
+use EvolutionCMS\Manager\Interfaces\ManagerTheme;
 
 class Help extends AbstractController implements ManagerTheme\PageControllerInterface
 {

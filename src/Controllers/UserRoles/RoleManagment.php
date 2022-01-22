@@ -1,6 +1,6 @@
 <?php namespace EvolutionCMS\Manager\Controllers\UserRoles;
 
-use EvolutionCMS\Interfaces\ManagerTheme;
+use EvolutionCMS\Manager\Interfaces\ManagerTheme;
 use EvolutionCMS\Controllers\AbstractResources;
 
 class RoleManagment extends AbstractResources implements ManagerTheme\PageControllerInterface

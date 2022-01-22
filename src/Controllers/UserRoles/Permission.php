@@ -1,8 +1,8 @@
 <?php namespace EvolutionCMS\Manager\Controllers\UserRoles;
 
-use EvolutionCMS\Controllers\AbstractController;
+use EvolutionCMS\Manager\Controllers\AbstractController;
 use EvolutionCMS\Models;
-use EvolutionCMS\Interfaces\ManagerTheme;
+use EvolutionCMS\Manager\Interfaces\ManagerTheme;
 
 class Permission extends AbstractController implements ManagerTheme\PageControllerInterface
 {
