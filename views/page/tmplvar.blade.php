@@ -282,18 +282,18 @@
             duplicate: function() {
               if (confirm("{{ ManagerTheme::getLexicon('confirm_duplicate_record') }}") === true) {
                 documentDirty = false;
-                document.location.href = "index.php?id={{ $data->getKey() }}&a=304";
+                document.location.href = "?id={{ $data->getKey() }}&a=304";
               }
             },
             delete: function() {
               if (confirm("{{ ManagerTheme::getLexicon('confirm_delete_tmplvars') }}") === true) {
                 documentDirty = false;
-                document.location.href = 'index.php?id=' + document.mutate.id.value + '&a=303';
+                document.location.href = '?id=' + document.mutate.id.value + '&a=303';
               }
             },
             cancel: function() {
               documentDirty = false;
-              document.location.href = 'index.php?a={{ $origin }}@if(!empty($originId))&id={{ $originId}}@endif&tab=1';
+              document.location.href = '?a={{ $origin }}@if(!empty($originId))&id={{ $originId}}@endif&tab=1';
             }
           };
 

@@ -40,5 +40,5 @@ $name = EvolutionCMS\Models\SitePlugin::select('name')->findOrFail($newid)->name
 $_SESSION['itemname'] = $name;
 
 // finish duplicating - redirect to new plugin
-$header = "Location: index.php?r=2&a=102&id=$newid";
+$header = "Location: ?r=2&a=102&id=$newid";
 header($header);

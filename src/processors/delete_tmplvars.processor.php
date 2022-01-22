@@ -23,10 +23,10 @@ if(!$forced) {
 		<script>
 			var actions = {
 				delete: function() {
-					document.location.href = "index.php?id=<?= $id ?>&a=303&force=1";
+					document.location.href = "?id=<?= $id ?>&a=303&force=1";
 				},
 				cancel: function() {
-					window.location.href = 'index.php?a=301&id=<?= $id ?>';
+					window.location.href = '?a=301&id=<?= $id ?>';
 				}
 			};
 		</script>
@@ -42,7 +42,7 @@ if(!$forced) {
 				<ul>
 					<?php
                     foreach ($siteTmlvarTemplates as $siteTmlvarTemplate) {
-                        echo '<li><span style="width: 200px"><a href="index.php?id=' . $siteTmlvarTemplate->resource->id . '&a=27">' . $siteTmlvarTemplate->resource->pagetitle . '</a></span>' . ($siteTmlvarTemplate->resource->description != '' ? ' - ' . $siteTmlvarTemplate->resource->description : '') . '</li>';
+                        echo '<li><span style="width: 200px"><a href="?id=' . $siteTmlvarTemplate->resource->id . '&a=27">' . $siteTmlvarTemplate->resource->pagetitle . '</a></span>' . ($siteTmlvarTemplate->resource->description != '' ? ' - ' . $siteTmlvarTemplate->resource->description : '') . '</li>';
                     }
 					?>
 				</ul>
@@ -75,5 +75,5 @@ $modx->invokeEvent("OnTVFormDelete", array(
 $modx->clearCache('full');
 
 // finished emptying cache - redirect
-$header = "Location: index.php?a=76&r=2";
+$header = "Location: ?a=76&r=2";
 header($header);

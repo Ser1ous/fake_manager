@@ -62,7 +62,7 @@ require_once(MODX_MANAGER_PATH . 'includes/active_user_locks.inc.php');
         }
         documentDirty = false;
 
-        window.location.href = "index.php?id=<?= (isset($_REQUEST['id'])) ? $_REQUEST['id'] : "" ?>&a=113";
+        window.location.href = "?id=<?= (isset($_REQUEST['id'])) ? $_REQUEST['id'] : "" ?>&a=113";
     }
 
     var actions = {
@@ -75,21 +75,21 @@ require_once(MODX_MANAGER_PATH . 'includes/active_user_locks.inc.php');
         duplicate: function () {
             if (confirm("<?= $_lang['confirm_duplicate_record'] ?>") === true) {
                 documentDirty = false;
-                document.location.href = "index.php?id=<?= (isset($_REQUEST['id'])) ? $_REQUEST['id'] : "" ?>&a=111";
+                document.location.href = "?id=<?= (isset($_REQUEST['id'])) ? $_REQUEST['id'] : "" ?>&a=111";
             }
         },
         delete: function () {
             if (confirm("<?= $_lang['confirm_delete_module'] ?>") === true) {
                 documentDirty = false;
-                document.location.href = "index.php?id=" + document.mutate.id.value + "&a=110";
+                document.location.href = "?id=" + document.mutate.id.value + "&a=110";
             }
         },
         cancel: function () {
             documentDirty = false;
-            document.location.href = 'index.php?a=106';
+            document.location.href = '?a=106';
         },
         run: function () {
-            document.location.href = "index.php?id=<?= (isset($_REQUEST['id'])) ? $_REQUEST['id'] : "" ?>&a=112";
+            document.location.href = "?id=<?= (isset($_REQUEST['id'])) ? $_REQUEST['id'] : "" ?>&a=112";
         }
     };
 

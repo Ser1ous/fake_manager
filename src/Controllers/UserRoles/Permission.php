@@ -28,7 +28,7 @@ class Permission extends AbstractController implements ManagerTheme\PageControll
     {
         if(isset($_GET['action']) && $_GET['action'] == 'delete' ){
             Models\Permissions::query()->where('id', $this->getElementId())->delete();
-            header('Location: index.php?a=86&tab=2');
+            header('Location: ?a=86&tab=2');
         }
         if (isset($_POST['a'])) {
             $this->updateOrCreate();
@@ -55,7 +55,7 @@ class Permission extends AbstractController implements ManagerTheme\PageControll
         $group->group_id = $group_id;
         $group->disabled = $_POST['disabled'];
         $group->save();
-        header('Location: index.php?a=135&id=' . $group->getKey() . '&r=9');
+        header('Location: ?a=135&id=' . $group->getKey() . '&r=9');
 
     }
 

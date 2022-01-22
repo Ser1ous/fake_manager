@@ -116,10 +116,10 @@ if ($modx->getConfig('friendly_urls')) {
         if (!is_null($docid)) {
             if ($actionToTake == 'edit') {
                 $modx->getManagerApi()->saveFormValues(27);
-                $modx->webAlertAndQuit(sprintf($_lang["duplicate_alias_found"], $docid->id, $alias), "index.php?a=27&id={$id}");
+                $modx->webAlertAndQuit(sprintf($_lang["duplicate_alias_found"], $docid->id, $alias), "?a=27&id={$id}");
             } else {
                 $modx->getManagerApi()->saveFormValues(4);
-                $modx->webAlertAndQuit(sprintf($_lang["duplicate_alias_found"], $docid->id, $alias), "index.php?a=4");
+                $modx->webAlertAndQuit(sprintf($_lang["duplicate_alias_found"], $docid->id, $alias), "?a=4");
             }
         }
     }
@@ -133,10 +133,10 @@ if ($modx->getConfig('friendly_urls')) {
         if (!is_null($docid)) {
             if ($actionToTake == 'edit') {
                 $modx->getManagerApi()->saveFormValues(27);
-                $modx->webAlertAndQuit(sprintf($_lang["duplicate_alias_found"], $docid->id, $alias), "index.php?a=27&id={$id}");
+                $modx->webAlertAndQuit(sprintf($_lang["duplicate_alias_found"], $docid->id, $alias), "?a=27&id={$id}");
             } else {
                 $modx->getManagerApi()->saveFormValues(4);
-                $modx->webAlertAndQuit(sprintf($_lang["duplicate_alias_found"], $docid->id, $alias), "index.php?a=4");
+                $modx->webAlertAndQuit(sprintf($_lang["duplicate_alias_found"], $docid->id, $alias), "?a=4");
             }
         }
     }
@@ -185,10 +185,10 @@ if($_SESSION['mgrRole'] != 1 && is_array($document_groups)) {
         if($count == 0) {
             if ($actionToTake == 'edit') {
                 $modx->getManagerApi()->saveFormValues(27);
-                $modx->webAlertAndQuit(sprintf($_lang["resource_permissions_error"]), "index.php?a=27&id={$id}");
+                $modx->webAlertAndQuit(sprintf($_lang["resource_permissions_error"]), "?a=27&id={$id}");
             } else {
                 $modx->getManagerApi()->saveFormValues(4);
-                $modx->webAlertAndQuit(sprintf($_lang["resource_permissions_error"]), "index.php?a=4");
+                $modx->webAlertAndQuit(sprintf($_lang["resource_permissions_error"]), "?a=4");
             }
         }
     }
@@ -274,10 +274,10 @@ if ($modx->getConfig('use_udperms') == 1) {
         if (!$udperms->checkPermissions()) {
             if ($actionToTake == 'edit') {
                 $modx->getManagerApi()->saveFormValues(27);
-                $modx->webAlertAndQuit(sprintf($_lang['access_permission_parent_denied'], $docid, $alias), "index.php?a=27&id={$id}");
+                $modx->webAlertAndQuit(sprintf($_lang['access_permission_parent_denied'], $docid, $alias), "?a=27&id={$id}");
             } else {
                 $modx->getManagerApi()->saveFormValues(4);
-                $modx->webAlertAndQuit(sprintf($_lang['access_permission_parent_denied'], $docid, $alias), "index.php?a=4");
+                $modx->webAlertAndQuit(sprintf($_lang['access_permission_parent_denied'], $docid, $alias), "?a=4");
             }
         }
     }
@@ -437,9 +437,9 @@ switch ($actionToTake) {
             // document
             if ($_POST['mode'] == "4")
                 $a = ($_POST['stay'] == '2') ? "27&id=$key" : "4&pid=$parentId";
-            $header = "Location: index.php?a=" . $a . "&r=1&stay=" . $_POST['stay'];
+            $header = "Location: ?a=" . $a . "&r=1&stay=" . $_POST['stay'];
         } else {
-            $header = "Location: index.php?a=3&id=$key&r=1";
+            $header = "Location: ?a=3&id=$key&r=1";
         }
 
         if (headers_sent()) {
@@ -639,7 +639,7 @@ switch ($actionToTake) {
             }
 
             if ($_POST['refresh_preview'] == '1')
-                $header = "Location: ".MODX_SITE_URL."index.php?id=$id&z=manprev";
+                $header = "Location: ".MODX_SITE_URL."?id=$id&z=manprev";
             else {
                 if ($_POST['stay'] != '2' && $id > 0) {
                     $modx->unlockElement(7, $id);
@@ -653,9 +653,9 @@ switch ($actionToTake) {
                         // document
                         $a = ($_POST['stay'] == '2') ? "27&id=$id" : "4&pid=$parentId";
                     }
-                    $header = "Location: index.php?a=" . $a . "&r=1&stay=" . $_POST['stay'].$add_path;
+                    $header = "Location: ?a=" . $a . "&r=1&stay=" . $_POST['stay'].$add_path;
                 } else {
-                    $header = "Location: index.php?a=3&id=$id&r=1".$add_path;
+                    $header = "Location: ?a=3&id=$id&r=1".$add_path;
                 }
             }
             if (headers_sent()) {

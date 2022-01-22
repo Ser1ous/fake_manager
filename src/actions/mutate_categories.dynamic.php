@@ -15,7 +15,7 @@ $_module_params = array(
 	'native_language'  => 'de',
 	'name'             => $_lang['manage_categories'],
 	'dirname'          => MODX_MANAGER_URL,
-	'url'              => 'index.php?a=120&amp;id=' . get_by_key($_GET, 'id', 0),
+	'url'              => '?a=120&amp;id=' . get_by_key($_GET, 'id', 0),
 	'path'             => realpath(__DIR__) . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR,
 	'inc_dir'          => realpath(__DIR__) . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR,
 	'languages_dir'    => realpath(__DIR__) . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR . 'lang' . DIRECTORY_SEPARATOR,

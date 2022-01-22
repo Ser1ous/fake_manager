@@ -417,7 +417,7 @@ class ManagerTheme implements ManagerThemeInterface
         }
 
         Route::middleware('mgr')
-            ->namespace('\\EvolutionCMS\\Controllers')
+            ->namespace('\\EvolutionCMS\\Manager\\Controllers')
             ->group(MODX_BASE_PATH . 'routes/mgr.php');
 
         $routes = $evo->router->getRoutes();
@@ -544,7 +544,7 @@ class ManagerTheme implements ManagerThemeInterface
                                 // setcookie(session_name(), '', 0, MODX_BASE_URL);
                             }
                             header('HTTP/1.0 307 Redirect');
-                            header('Location: ' . MODX_MANAGER_URL . 'index.php?installGoingOn=2');
+                            header('Location: ' . MODX_MANAGER_URL . '?installGoingOn=2');
                         }
                     }
                 }
@@ -640,7 +640,7 @@ class ManagerTheme implements ManagerThemeInterface
             'modx_charset' => $this->getCharset(),
             'favicon' => (file_exists(MODX_BASE_PATH . 'favicon.ico') ? MODX_SITE_URL : $this->getThemeUrl() . 'images/') . 'favicon.ico',
             'homeurl' => $this->getCore()->makeUrl($this->getManagerStartupPageId()),
-            'logouturl' => MODX_MANAGER_URL . 'index.php?a=8',
+            'logouturl' => MODX_MANAGER_URL . '?a=8',
             'year' => date('Y'),
             'theme' => $this->getTheme(),
             'manager_theme_url' => $this->getThemeUrl(),

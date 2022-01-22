@@ -97,12 +97,12 @@
             },
             delete: function () {
                 if (confirm("{{ ManagerTheme::getLexicon('confirm_delete_permission') }}") === true) {
-                    document.location.href = "index.php?id=" + document.userform.id.value + "&a=135&action=delete";
+                    document.location.href = "?id=" + document.userform.id.value + "&a=135&action=delete";
                 }
             },
             cancel: function () {
                 documentDirty = false;
-                document.location.href = 'index.php?a=86&tab=2';
+                document.location.href = '?a=86&tab=2';
             }
         }
 

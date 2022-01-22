@@ -53,7 +53,7 @@ if(!isset($modx->config['_hide_configcheck_templateswitcher_present']) || $modx-
 <script type="text/javascript">
 function deleteTemplateSwitcher(){
     if(confirm('{$_lang["confirm_delete_plugin"]}')) {
-        var myAjax = new Ajax('index.php?a=118', {
+        var myAjax = new Ajax('?a=118', {
             method: 'post',
             data: 'action=updateplugin&key=_delete_&lang=$tplName'
         });
@@ -66,7 +66,7 @@ function deleteTemplateSwitcher(){
     }
 }
 function disableTemplateSwitcher(){
-    var myAjax = new Ajax('index.php?a=118', {
+    var myAjax = new Ajax('?a=118', {
         method: 'post',
         data: 'action=updateplugin&lang={$tplName}&key=disabled&value=1'
     });
@@ -166,7 +166,7 @@ for ($i=0;$i<count($warnings);$i++) {
             $warnings[$i][1] = $_lang["configcheck_sysfiles_mod_msg"];
 			$warnings[$i][2] = '<ul><li>'. implode('</li><li>', $sysfiles_check) .'</li></ul>';
 			if($modx->hasPermission('settings')) {
-				$warnings[$i][2] .= '<ul class="actionButtons" style="float:right"><li><a href="index.php?a=2&b=resetSysfilesChecksum" onclick="return confirm(\'' . $_lang["reset_sysfiles_checksum_alert"] . '\')">' . $_lang["reset_sysfiles_checksum_button"] . '</a></li></ul>';
+				$warnings[$i][2] .= '<ul class="actionButtons" style="float:right"><li><a href="?a=2&b=resetSysfilesChecksum" onclick="return confirm(\'' . $_lang["reset_sysfiles_checksum_alert"] . '\')">' . $_lang["reset_sysfiles_checksum_button"] . '</a></li></ul>';
 			}
             if(empty($_SESSION["mgrConfigCheck"])) $modx->logEvent(0,3,$warnings[$i][1]." ".implode(', ',$sysfiles_check),$_lang['configcheck_sysfiles_mod']);
             break;

@@ -27,5 +27,5 @@ $_SESSION['itemname'] = $name;
 // delete the attributes
 EvolutionCMS\Models\UserRole::select('name')->where('id',$id)->delete();
 
-$header="Location: index.php?a=86";
+$header="Location: ?a=86";
 header($header);

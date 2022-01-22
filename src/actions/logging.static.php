@@ -129,7 +129,7 @@ $logs = \EvolutionCMS\Models\ManagerLog::query()->select('internalKey', 'usernam
                 <a class="btn btn-success" href="javascript:;"
                    onclick="documentDirty=false;document.logging.log_submit.click();"><i
                             class="<?= $_style["icon_search"] ?>"></i> <?= $_lang['search'] ?></a>
-                <a class="btn btn-secondary" href="index.php?a=2" onclick="documentDirty=false;"><i
+                <a class="btn btn-secondary" href="?a=2" onclick="documentDirty=false;"><i
                             class="<?= $_style["icon_cancel"] ?>"></i> <?= $_lang['cancel'] ?></a>
 
                 <input type="submit" name="log_submit" value="<?= $_lang["mgrlog_searchlogs"] ?>"
@@ -261,12 +261,12 @@ if ($limit < 1) {
                     if (!preg_match("/^[0-9]+$/", $logentry['itemid'])) {
                         $item = '<div style="text-align:center;">-</div>';
                     } elseif ($logentry['action'] == 3 || $logentry['action'] == 27 || $logentry['action'] == 5) {
-                        $item = '<a href="index.php?a=3&amp;id=' . $logentry['itemid'] . '">' . $logentry['itemname'] . '</a>';
+                        $item = '<a href="?a=3&amp;id=' . $logentry['itemid'] . '">' . $logentry['itemname'] . '</a>';
                     } else {
                         $item = $logentry['itemname'];
                     }
-                    //index.php?a=13&searchuser=' . $logentry['internalKey'] . '&action=' . $logentry['action'] . '&itemname=' . $logentry['itemname'] . '&log_submit=true'
-                    $user_drill = 'index.php?a=13&searchuser=' . $logentry['internalKey'] . '&itemname=0&log_submit=true';
+                    //?a=13&searchuser=' . $logentry['internalKey'] . '&action=' . $logentry['action'] . '&itemname=' . $logentry['itemname'] . '&log_submit=true'
+                    $user_drill = '?a=13&searchuser=' . $logentry['internalKey'] . '&itemname=0&log_submit=true';
                     ?>
                     <tr>
                         <td><?= '<a href="' . $user_drill . '">' . $logentry['username'] . '</a>' ?></td>

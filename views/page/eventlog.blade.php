@@ -75,10 +75,10 @@
             var id = selectedItem;
             switch (a) {
               case 1:		// view log details
-                window.location.href = 'index.php?a=115&id=' + id;
+                window.location.href = '?a=115&id=' + id;
                 break;
               case 2:		// clear log
-                window.location.href = 'index.php?a=116&id=' + id;
+                window.location.href = '?a=116&id=' + id;
                 break;
             }
           }
@@ -115,7 +115,7 @@
                 <div class="row searchbar form-group">
                     <div class="col-sm-6 input-group">
                         <div class="input-group-btn">
-                            <a class="btn btn-danger btn-sm" href="index.php?a=116&cls=1"><i class="{{ $_style['icon_trash'] }}"></i> {{ ManagerTheme::getLexicon('clear_log') }}</a>
+                            <a class="btn btn-danger btn-sm" href="?a=116&cls=1"><i class="{{ $_style['icon_trash'] }}"></i> {{ ManagerTheme::getLexicon('clear_log') }}</a>
                         </div>
                     </div>
                     <div class="col-sm-6 ">
@@ -165,7 +165,7 @@
                         $grd->columns = ManagerTheme::getLexicon('type') . " ," . ManagerTheme::getLexicon('source') . " ," . ManagerTheme::getLexicon('date') . " ," . ManagerTheme::getLexicon('event_id') . " ," . ManagerTheme::getLexicon('sysinfo_userid');
                         $grd->colWidths = "1%,,1%,1%,1%";
                         $grd->colAligns = "center,,,center,center";
-                        $grd->colTypes = "template:<a class='gridRowIcon' href='javascript:;' onclick='return showContentMenu([+id+],event);' title='" . ManagerTheme::getLexicon('click_to_context') . "'><i class='[+icon+]'></i></a>||template:<a href='index.php?a=115&id=[+id+]' title='" . ManagerTheme::getLexicon('click_to_view_details') . "'>[+source+]</a>||date: " . $modx->toDateFormat(null, 'formatOnly');
+                        $grd->colTypes = "template:<a class='gridRowIcon' href='javascript:;' onclick='return showContentMenu([+id+],event);' title='" . ManagerTheme::getLexicon('click_to_context') . "'><i class='[+icon+]'></i></a>||template:<a href='?a=115&id=[+id+]' title='" . ManagerTheme::getLexicon('click_to_view_details') . "'>[+source+]</a>||date: " . $modx->toDateFormat(null, 'formatOnly');
                         if ($listmode == '1') {
                             $grd->pageSize = 0;
                         }

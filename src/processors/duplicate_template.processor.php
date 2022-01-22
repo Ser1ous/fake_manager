@@ -38,5 +38,5 @@ $name = EvolutionCMS\Models\SiteTemplate::select('templatename')->findOrFail($ne
 $_SESSION['itemname'] = $name;
 
 // finish duplicating - redirect to new template
-$header="Location: index.php?r=2&a=16&id=$newid";
+$header="Location: ?r=2&a=16&id=$newid";
 header($header);

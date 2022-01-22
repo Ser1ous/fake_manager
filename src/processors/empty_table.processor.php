@@ -8,5 +8,5 @@ if(!$modx->hasPermission('settings')) {
 
 \EvolutionCMS\Models\ManagerLog::query()->truncate();
 
-$header="Location: index.php?a=13";
+$header="Location: ?a=13";
 header($header);

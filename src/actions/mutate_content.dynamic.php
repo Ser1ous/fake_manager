@@ -167,10 +167,10 @@ require_once(MODX_MANAGER_PATH . 'includes/active_user_locks.inc.php');
 
       var actions = {
           new: function() {
-              document.location.href = "index.php?pid=<?= isset($_REQUEST['id']) ? $_REQUEST['id'] : '' ?>&a=4";
+              document.location.href = "?pid=<?= isset($_REQUEST['id']) ? $_REQUEST['id'] : '' ?>&a=4";
           },
           newlink: function() {
-              document.location.href = "index.php?pid=<?= isset($_REQUEST['id']) ? $_REQUEST['id'] : '' ?>&a=72";
+              document.location.href = "?pid=<?= isset($_REQUEST['id']) ? $_REQUEST['id'] : '' ?>&a=72";
           },
         save: function() {
           documentDirty = false;
@@ -179,20 +179,20 @@ require_once(MODX_MANAGER_PATH . 'includes/active_user_locks.inc.php');
         },
         delete: function() {
           if(confirm("<?= $_lang['confirm_delete_resource']?>") === true) {
-            document.location.href = "index.php?id=" + document.mutate.id.value + "&a=6<?= $add_path ?>";
+            document.location.href = "?id=" + document.mutate.id.value + "&a=6<?= $add_path ?>";
           }
         },
         cancel: function() {
           documentDirty = false;
-          document.location.href = 'index.php?<?=($id == 0 ? 'a=2' : 'a=3&r=1&id=' . $id . $add_path) ?>';
+          document.location.href = '?<?=($id == 0 ? 'a=2' : 'a=3&r=1&id=' . $id . $add_path) ?>';
         },
         duplicate: function() {
           if(confirm("<?= $_lang['confirm_resource_duplicate']?>") === true) {
-            document.location.href = "index.php?id=<?= (int)get_by_key($_REQUEST, 'id', 0, 'is_scalar') ?>&a=94<?= $add_path ?>";
+            document.location.href = "?id=<?= (int)get_by_key($_REQUEST, 'id', 0, 'is_scalar') ?>&a=94<?= $add_path ?>";
           }
         },
         view: function() {
-          window.open('<?= $modx->getConfig('friendly_urls') ? UrlProcessor::makeUrl($id) : MODX_SITE_URL . 'index.php?id=' . $id ?>', 'previeWin');
+          window.open('<?= $modx->getConfig('friendly_urls') ? UrlProcessor::makeUrl($id) : MODX_SITE_URL . '?id=' . $id ?>', 'previeWin');
         }
       };
 
@@ -215,7 +215,7 @@ require_once(MODX_MANAGER_PATH . 'includes/active_user_locks.inc.php');
 
       function setLink(lId) {
         if(!allowLinkSelection) {
-          window.location.href = "index.php?a=3&id=" + lId + "<?= $add_path ?>";
+          window.location.href = "?a=3&id=" + lId + "<?= $add_path ?>";
         }
         else {
           documentDirty = true;
@@ -239,7 +239,7 @@ require_once(MODX_MANAGER_PATH . 'includes/active_user_locks.inc.php');
 
       function setParent(pId, pName) {
         if(!allowParentSelection) {
-          window.location.href = "index.php?a=3&id=" + pId + "<?= $add_path ?>";
+          window.location.href = "?a=3&id=" + pId + "<?= $add_path ?>";
         }
         else {
           if(pId === 0 || checkParentChildRelation(pId, pName)) {
@@ -569,7 +569,7 @@ require_once(MODX_MANAGER_PATH . 'includes/active_user_locks.inc.php');
                         $parentsResult = SiteContent::withTrashed()->select('id','pagetitle')->whereIn('id', $temp)->get();
                         foreach ($parentsResult->toArray() as $row) {
                             $out .= '<li class="breadcrumbs__li">
-                                <a href="index.php?a=27&id=' . $row['id'] . '" class="breadcrumbs__a">' . htmlspecialchars($row['pagetitle'], ENT_QUOTES, $modx->getConfig('modx_charset')) . '</a>
+                                <a href="?a=27&id=' . $row['id'] . '" class="breadcrumbs__a">' . htmlspecialchars($row['pagetitle'], ENT_QUOTES, $modx->getConfig('modx_charset')) . '</a>
                                 <span class="breadcrumbs__sep">&gt;</span>
                             </li>';
                         }

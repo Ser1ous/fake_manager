@@ -13,7 +13,7 @@
                 },
                 cancel: function() {
                     documentDirty = false;
-                    document.location.href = "index.php?a=3&id={{ $document->getKey() }}";
+                    document.location.href = "?a=3&id={{ $document->getKey() }}";
                 }
             };
 

@@ -34,13 +34,13 @@ class ChangePassword extends AbstractController implements ManagerTheme\PageCont
             foreach ($exception->getValidationErrors() as $errors){
                 if(is_array($errors)){
                     foreach ($errors as $error){
-                        EvolutionCMS()->webAlertAndQuit($error, 'index.php?a=28');
+                        EvolutionCMS()->webAlertAndQuit($error, '?a=28');
                     }
                 }
             }
         }
 
-        header("Location: index.php?a=99");
+        header("Location: ?a=99");
         exit();
     }
 

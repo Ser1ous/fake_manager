@@ -34,5 +34,5 @@ if (isset($_REQUEST['t'])) {
 }
 
 $mode = (int)get_by_key($_REQUEST, 'mode', 93, 'is_scalar');
-$header="Location: index.php?a={$mode}&s=4";
+$header="Location: ?a={$mode}&s=4";
 header($header);

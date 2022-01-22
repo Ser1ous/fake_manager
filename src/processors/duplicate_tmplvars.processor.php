@@ -43,5 +43,5 @@ foreach ($tmplvar->tmplvarAccess as $tmplvarAccess) {
 $_SESSION['itemname'] = $newTmplvar->name;
 
 // finish duplicating - redirect to new variable
-$header = "Location: index.php?r=2&a=301&id=" . $newTmplvar->getKey();
+$header = "Location: ?r=2&a=301&id=" . $newTmplvar->getKey();
 header($header);

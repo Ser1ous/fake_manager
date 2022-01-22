@@ -5,12 +5,12 @@
             var actions = {
                 delete: function() {
                     if(confirm("{{ ManagerTheme::getLexicon('confirm_delete_eventlog') }}") === true) {
-                        document.location.href = "index.php?id=" + document.resource.id.value + "&a=116";
+                        document.location.href = "?id=" + document.resource.id.value + "&a=116";
                     }
                 },
                 cancel: function() {
                     documentDirty = false;
-                    document.location.href = 'index.php?a=114';
+                    document.location.href = '?a=114';
                 }
             };
         </script>

@@ -30,18 +30,18 @@
             duplicate: function() {
               if (confirm('{{ ManagerTheme::getLexicon('confirm_duplicate_record') }}') === true) {
                 documentDirty = false;
-                document.location.href = "index.php?id={{ $data->getKey() }}&a=97";
+                document.location.href = "?id={{ $data->getKey() }}&a=97";
               }
             },
             delete: function() {
               if (confirm('{{ ManagerTheme::getLexicon('confirm_delete_htmlsnippet') }}') === true) {
                 documentDirty = false;
-                document.location.href = 'index.php?id=' + document.mutate.id.value + '&a=80';
+                document.location.href = '?id=' + document.mutate.id.value + '&a=80';
               }
             },
             cancel: function() {
               documentDirty = false;
-              document.location.href = 'index.php?a=76&tab=2';
+              document.location.href = '?a=76&tab=2';
             }
           };
 

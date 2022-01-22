@@ -76,7 +76,7 @@ switch ($_POST['mode']) {
         // disallow duplicate names for new snippets
         if (EvolutionCMS\Models\SiteSnippet::where('name','=',$name)->first()) {
             $modx->getManagerApi()->saveFormValues(23);
-            $modx->webAlertAndQuit(sprintf($_lang['duplicate_name_found_general'], $_lang['snippet'], $name), "index.php?a=23");
+            $modx->webAlertAndQuit(sprintf($_lang['duplicate_name_found_general'], $_lang['snippet'], $name), "?a=23");
         }
 
         //do stuff to save the new doc
@@ -97,10 +97,10 @@ switch ($_POST['mode']) {
         // finished emptying cache - redirect
         if ($_POST['stay'] != '') {
             $a = ($_POST['stay'] == '2') ? "22&id=$newid" : "23";
-            $header = "Location: index.php?a=" . $a . "&r=2&stay=" . $_POST['stay'];
+            $header = "Location: ?a=" . $a . "&r=2&stay=" . $_POST['stay'];
             header($header);
         } else {
-            $header = "Location: index.php?a=76&r=2";
+            $header = "Location: ?a=76&r=2";
             header($header);
         }
         break;
@@ -114,7 +114,7 @@ switch ($_POST['mode']) {
         // disallow duplicate names for snippets
         if (EvolutionCMS\Models\SiteSnippet::where('id','!=',$id)->where('name','=',$name)->first()) {
             $modx->getManagerApi()->saveFormValues(22);
-            $modx->webAlertAndQuit(sprintf($_lang['duplicate_name_found_general'], $_lang['snippet'], $name), "index.php?a=22&id={$id}");
+            $modx->webAlertAndQuit(sprintf($_lang['duplicate_name_found_general'], $_lang['snippet'], $name), "?a=22&id={$id}");
         }
 
         //do stuff to save the edited doc
@@ -137,11 +137,11 @@ switch ($_POST['mode']) {
         // finished emptying cache - redirect
         if ($_POST['stay'] != '') {
             $a = ($_POST['stay'] == '2') ? "22&id=$id" : "23";
-            $header = "Location: index.php?a=" . $a . "&r=2&stay=" . $_POST['stay'];
+            $header = "Location: ?a=" . $a . "&r=2&stay=" . $_POST['stay'];
             header($header);
         } else {
             $modx->unlockElement(4, $id);
-            $header = "Location: index.php?a=76&r=2";
+            $header = "Location: ?a=76&r=2";
             header($header);
         }
         break;

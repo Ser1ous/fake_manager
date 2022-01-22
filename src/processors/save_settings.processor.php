@@ -143,5 +143,5 @@ if (isset($data) && count($data) > 0) {
 	// empty cache
 	$modx->clearCache('full');
 }
-$header="Location: index.php?a=7&r=10";
+$header="Location: ?a=7&r=10";
 header($header);

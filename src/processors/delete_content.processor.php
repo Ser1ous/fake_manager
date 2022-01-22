@@ -84,5 +84,5 @@ $_SESSION['itemname'] = $document->pagetitle;
 $modx->clearCache('full');
 
 // finished emptying cache - redirect
-$header = "Location: index.php?a=3&id=$pid&r=1" . $add_path;
+$header = "Location: ?a=3&id=$pid&r=1" . $add_path;
 header($header);

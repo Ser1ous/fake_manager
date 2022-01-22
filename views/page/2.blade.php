@@ -6,7 +6,7 @@
 
     if($modx->hasPermission('settings') && $modx->getConfig('settings_version') !== $modx->getVersionData('version')) {
         // seems to be a new install - send the user to the configuration page
-        exit('<script type="text/javascript">document.location.href="index.php?a=17";</script>');
+        exit('<script type="text/javascript">document.location.href="?a=17";</script>');
     }
 
     // set placeholders
@@ -113,7 +113,7 @@
 	</tr>
 	<tr>
 		<td>[%inbox%]</td>
-		<td><a href="index.php?a=10" target="main"><b>[+msginfo+]</b></a></td>
+		<td><a href="?a=10" target="main"><b>[+msginfo+]</b></a></td>
 	</tr>
 </table>';
 
@@ -311,13 +311,13 @@
             <div class="wm_buttons card-body">' .
             ($modx->hasPermission("new_document") ? '
                 <span class="wm_button">
-                    <a target="main" href="index.php?a=4">
+                    <a target="main" href="?a=4">
                         <i class="'. $_style['icon_document'] . $_style['icon_size_2x'] . $_style['icon_size_fix'] . '"></i>
                         <span>[%add_resource%]</span>
                     </a>
                 </span>
                 <span class="wm_button">
-                    <a target="main" href="index.php?a=72">
+                    <a target="main" href="?a=72">
                         <i class="'. $_style['icon_chain'] . $_style['icon_size_2x'] . $_style['icon_size_fix'] . '"></i>
                         <span>[%add_weblink%]</span>
                     </a>
@@ -341,7 +341,7 @@
                 ' : '') .
             ($modx->hasPermission("bk_manager") ? '
                 <span class="wm_button">
-                    <a target="main" href="index.php?a=93">
+                    <a target="main" href="?a=93">
                         <i class="'. $_style['icon_database'] . $_style['icon_size_2x'] . $_style['icon_size_fix'] . '"></i>
                         <span>[%bk_manager%]</span>
                     </a>
@@ -349,14 +349,14 @@
                 ' : '') .
             ($modx->hasPermission("change_password") ? '
                 <span class="wm_button">
-                    <a target="main" href="index.php?a=28">
+                    <a target="main" href="?a=28">
                         <i class="'. $_style['icon_lock'] . $_style['icon_size_2x'] . $_style['icon_size_fix'] . '"></i>
                         <span>[%change_password%]</span>
                     </a>
                 </span>
                 ' : '') . '
                 <span class="wm_button">
-                    <a target="_top" href="index.php?a=8">
+                    <a target="_top" href="?a=8">
                         <i class="'. $_style['icon_logout'] . $_style['icon_size_2x'] . $_style['icon_size_fix'] . '"></i>
                         <span>[%logout%]</span>
                     </a>

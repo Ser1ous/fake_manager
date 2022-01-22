@@ -84,7 +84,7 @@
 
                                 @if (evolutionCMS()->hasPermission('settings') && in_array($tableName, $truncateable))
                                     <td class="text-xs-right">
-                                        <a class="text-danger" href="index.php?a=54&mode=$action&u={{ $tableName }}"
+                                        <a class="text-danger" href="?a=54&mode=$action&u={{ $tableName }}"
                                            title="{{ ManagerTheme::getLexicon('truncate_table') }}">
                                             {{ nicesize(($table['Data_length']?? 0) + ($table['Data_free']?? 0)) }}
                                         </a>
@@ -99,7 +99,7 @@
                                     <td class="text-xs-right">
                                         @if(isset($table['Data_free']) && $table['Data_free'] > 0)
                                             <a class="text-danger"
-                                               href="index.php?a=54&mode=$action&t={{ $tableName }}"
+                                               href="?a=54&mode=$action&t={{ $tableName }}"
                                                title="{{ ManagerTheme::getLexicon('optimize_table') }}">
                                                 <span> {{ nicesize($table['Data_free'] ?? 0) }}</span>
                                             </a>

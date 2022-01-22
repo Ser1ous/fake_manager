@@ -74,7 +74,7 @@ switch ($_POST['mode']) {
         $count = \EvolutionCMS\Models\SiteModule::query()->where('name', $name)->count();
         if ($count > 0) {
             $modx->getManagerApi()->saveFormValues(107);
-            $modx->webAlertAndQuit(sprintf($_lang['duplicate_name_found_module'], $name), "index.php?a=107");
+            $modx->webAlertAndQuit(sprintf($_lang['duplicate_name_found_module'], $name), "?a=107");
         }
 
         // save the new module
@@ -114,10 +114,10 @@ switch ($_POST['mode']) {
         // finished emptying cache - redirect
         if ($_POST['stay'] != '') {
             $a = ($_POST['stay'] == '2') ? "108&id=$newid" : "107";
-            $header = "Location: index.php?a=" . $a . "&r=2&stay=" . $_POST['stay'];
+            $header = "Location: ?a=" . $a . "&r=2&stay=" . $_POST['stay'];
             header($header);
         } else {
-            $header = "Location: index.php?a=106&r=2";
+            $header = "Location: ?a=106&r=2";
             header($header);
         }
         break;
@@ -133,7 +133,7 @@ switch ($_POST['mode']) {
 
         if ($count > 0) {
             $modx->getManagerApi()->saveFormValues(108);
-            $modx->webAlertAndQuit(sprintf($_lang['duplicate_name_found_module'], $name), "index.php?a=108&id={$id}");
+            $modx->webAlertAndQuit(sprintf($_lang['duplicate_name_found_module'], $name), "?a=108&id={$id}");
         }
 
         // save the edited module
@@ -172,11 +172,11 @@ switch ($_POST['mode']) {
         // finished emptying cache - redirect
         if ($_POST['stay'] != '') {
             $a = ($_POST['stay'] == '2') ? "108&id=$id" : "107";
-            $header = "Location: index.php?a=" . $a . "&r=2&stay=" . $_POST['stay'];
+            $header = "Location: ?a=" . $a . "&r=2&stay=" . $_POST['stay'];
             header($header);
         } else {
             $modx->unlockElement(6, $id);
-            $header = "Location: index.php?a=106&r=2";
+            $header = "Location: ?a=106&r=2";
             header($header);
         }
         break;

@@ -7,7 +7,7 @@
           var actions = {
             cancel: function() {
               documentDirty = false;
-              document.location.href = 'index.php?a=2';
+              document.location.href = '?a=2';
             }
           };
         </script>
@@ -67,7 +67,7 @@
                     <i class="{{ ManagerTheme::getStyle('icon_search') }}"></i> {{ ManagerTheme::getLexicon('search') }}
                 </a>
 
-                <a class="btn btn-secondary" href="index.php?a=2">
+                <a class="btn btn-secondary" href="?a=2">
                     <i class="{{ ManagerTheme::getStyle('icon_cancel') }}"></i> {{ ManagerTheme::getLexicon('cancel') }}
                 </a>
 
@@ -105,7 +105,7 @@
                             @foreach($results as $row)
                                 <tr>
                                     <td class="text-center">
-                                        <a href="index.php?a=3&id={{ $row['id'] }}" title="{{ ManagerTheme::getLexicon('search_view_docdata') }}">
+                                        <a href="?a=3&id={{ $row['id'] }}" title="{{ ManagerTheme::getLexicon('search_view_docdata') }}">
                                             <i class="{{ ManagerTheme::getStyle('icon_info') }}"></i>
                                         </a>
                                     </td>
@@ -114,7 +114,7 @@
                                         <i class="{{ $row['iconClass'] }}"></i>
                                     </td>
                                     <td class="{{ $row['rowClass'] }}">
-                                        <a href="index.php?a=27&id={{ $row['id'] }}">{{ $row['pagetitle'] }}</a>
+                                        <a href="?a=27&id={{ $row['id'] }}">{{ $row['pagetitle'] }}</a>
                                     </td>
                                     <td class="{{ $row['rowClass'] }}">{{ $row['description'] }}</td>
                                 </tr>

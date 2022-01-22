@@ -67,11 +67,11 @@ echo $cm->render();
 		var id = selectedItem;
 		switch(a) {
 			case 1:		// edit
-				window.location.href = 'index.php?a=88&id=' + id;
+				window.location.href = '?a=88&id=' + id;
 				break;
 			case 2:		// delete
 				if(confirm("<?= $_lang['confirm_delete_user'] ?>") === true) {
-					window.location.href = 'index.php?a=90&id=' + id;
+					window.location.href = '?a=90&id=' + id;
 				}
 				break;
 		}
@@ -106,7 +106,7 @@ echo $cm->render();
             <div class="row searchbar form-group">
                 <div class="col-sm-6 input-group">
                     <div class="input-group-btn">
-                        <a class="btn btn-success btn-sm" href="index.php?a=87"><i class="<?= $_style['icon_add'] ?>"></i> <?= $_lang['new_web_user'] ?></a>
+                        <a class="btn btn-success btn-sm" href="?a=87"><i class="<?= $_style['icon_add'] ?>"></i> <?= $_lang['new_web_user'] ?></a>
                     </div>
                 </div>
                 <div class="col-sm-6 ">
@@ -148,7 +148,7 @@ echo $cm->render();
 					$grd->columns = $_lang["icon"] . " ," . $_lang["name"] . " ," . $_lang["user_full_name"] . " ," . $_lang["email"] . " ," . $_lang["user_prevlogin"] . " ," . $_lang["user_logincount"] . " ," . $_lang["user_block"];
 					$grd->colWidths = "1%,,,,1%,1%,1%";
 					$grd->colAligns = "center,,,,right' nowrap='nowrap,right,center";
-					$grd->colTypes = "template:<a class='gridRowIcon' href='javascript:;' onclick='return showContentMenu([+id+],event);' title='" . $_lang["click_to_context"] . "'><i class='" . $_style["icon_web_user"] . "'></i></a>||template:<a href='index.php?a=88&id=[+id+]' title='" . $_lang["click_to_edit_title"] . "'>[+value+]</a>||template:[+fullname+]||template:[+email+]||date: " . $modx->toDateFormat('[+thislogin+]', 'formatOnly') .
+					$grd->colTypes = "template:<a class='gridRowIcon' href='javascript:;' onclick='return showContentMenu([+id+],event);' title='" . $_lang["click_to_context"] . "'><i class='" . $_style["icon_web_user"] . "'></i></a>||template:<a href='?a=88&id=[+id+]' title='" . $_lang["click_to_edit_title"] . "'>[+value+]</a>||template:[+fullname+]||template:[+email+]||date: " . $modx->toDateFormat('[+thislogin+]', 'formatOnly') .
 					" %H:%M";
 					if($listmode == '1') {
 						$grd->pageSize = 0;

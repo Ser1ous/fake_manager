@@ -38,18 +38,18 @@ if ($_SESSION['mgrRole'] != 1 && is_numeric($id)) {
     }
 
     if ($permissionAccessInt == 0) {
-        $modx->webAlertAndQuit("You do not sufficient privileges to execute this module.", "index.php?a=106");
+        $modx->webAlertAndQuit("You do not sufficient privileges to execute this module.", "?a=106");
     }
 }
 if (is_numeric($id)) {
     // get module data
     $content = \EvolutionCMS\Models\SiteModule::find($id);
     if (is_null($content)) {
-        $modx->webAlertAndQuit("No record found for id {$id}.", "index.php?a=106");
+        $modx->webAlertAndQuit("No record found for id {$id}.", "?a=106");
     }
     $content = $content->toArray();
     if ($content['disabled']) {
-        $modx->webAlertAndQuit("This module is disabled and cannot be executed.", "index.php?a=106");
+        $modx->webAlertAndQuit("This module is disabled and cannot be executed.", "?a=106");
     }
 } else {
     $content = $modx->modulesFromFile[$id];

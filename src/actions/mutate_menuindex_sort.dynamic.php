@@ -96,7 +96,7 @@ $pagetitle = empty($id) ? $modx->getConfig('site_name') : $pagetitle;
             }
             setTimeout('document.sortableListForm.submit()', 1000);
         }, cancel: function () {
-            document.location.href = 'index.php?a=2';
+            document.location.href = '?a=2';
         }
     };
 

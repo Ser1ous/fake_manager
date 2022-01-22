@@ -1,7 +1,7 @@
 function unlockElement(type, id, domEl) {
     var msg = trans.msg.replace('[+id+]',id).replace('[+element_type+]',trans['type'+type]);
     if(confirm(msg)==true) {
-        jQuery.get( 'index.php?a=67&type='+type+'&id='+id, function( data ) {
+        jQuery.get( '?a=67&type='+type+'&id='+id, function( data ) {
             if(data == 1) {
                 jQuery(domEl).fadeOut();
             }
@@ -247,7 +247,7 @@ jQuery( document ).ready(function() {
             if (r != true) return;
         }
 
-        var target = "index.php?a="+actionsIds[action]+ (id ? "&id="+id : "")+ (catid ? "&catid="+catid : "");
+        var target = "?a="+actionsIds[action]+ (id ? "&id="+id : "")+ (catid ? "&catid="+catid : "");
         
         if(top.main) top.main.document.location.href=target;
         else document.location.href=target;

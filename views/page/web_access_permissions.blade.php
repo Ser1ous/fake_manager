@@ -5,10 +5,10 @@
             function deletegroup(groupid, type) {
                 if(confirm("{{ ManagerTheme::getLexicon('confirm_delete_group') }}") === true) {
                     if(type === 'usergroup') {
-                        document.location.href = "index.php?a=92&usergroup=" + groupid + "&operation=delete_user_group";
+                        document.location.href = "?a=92&usergroup=" + groupid + "&operation=delete_user_group";
                     }
                     else if(type === 'documentgroup') {
-                        document.location.href = "index.php?a=92&documentgroup=" + groupid + "&operation=delete_document_group";
+                        document.location.href = "?a=92&documentgroup=" + groupid + "&operation=delete_document_group";
                     }
                 }
             }
@@ -83,7 +83,7 @@
                             @else
                                 <?php /** @var EvolutionCMS\Models\ManagerUser $user */?>
                                 @foreach($userGroup->users as $user)
-                                    <a href="index.php?a=88&id={{ $user->getKey() }}">{{ $user->username }}</a>@if($loop->last === false), @endif
+                                    <a href="?a=88&id={{ $user->getKey() }}">{{ $user->username }}</a>@if($loop->last === false), @endif
                                 @endforeach
                             @endif
                         </div>
@@ -135,7 +135,7 @@
                             @else
                                 <?php /** @var EvolutionCMS\Models\SiteContent $document */?>
                                 @foreach($documentGroup->documents as $document)
-                                    <a href="index.php?a=3&id={{ $document->getKey() }}" title="{{ $document->pagetitle }}">{{ $document->getKey() }}</a>@if($loop->last === false), @endif
+                                    <a href="?a=3&id={{ $document->getKey() }}" title="{{ $document->pagetitle }}">{{ $document->getKey() }}</a>@if($loop->last === false), @endif
                                 @endforeach
                             @endif
                         </div>
@@ -188,7 +188,7 @@
                                         @foreach($userGroup->documentGroups as $documentGroup)
                                             <li>
                                                 {{ $documentGroup->name }}
-                                                <small><i>(<a class="text-danger" href="index.php?a=92&coupling={{ $userGroup->getKey() }}&document_group={{ $documentGroup->getKey() }}&operation=remove_document_group_from_user_group">{{ ManagerTheme::getLexicon('remove') }}</a>)</i></small>
+                                                <small><i>(<a class="text-danger" href="?a=92&coupling={{ $userGroup->getKey() }}&document_group={{ $documentGroup->getKey() }}&operation=remove_document_group_from_user_group">{{ ManagerTheme::getLexicon('remove') }}</a>)</i></small>
                                             </li>
                                         @endforeach
                                     </ul>

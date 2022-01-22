@@ -68,7 +68,7 @@ switch ($_POST['mode']) {
         $count = \EvolutionCMS\Models\SiteTemplate::where('templatename', $templatename)->count();
         if ($count > 0) {
             $modx->getManagerApi()->saveFormValues(19);
-            $modx->webAlertAndQuit(sprintf($_lang['duplicate_name_found_general'], $_lang['template'], $templatename), "index.php?a=19");
+            $modx->webAlertAndQuit(sprintf($_lang['duplicate_name_found_general'], $_lang['template'], $templatename), "?a=19");
         }
 
         if($templatealias == '')
@@ -79,7 +79,7 @@ switch ($_POST['mode']) {
 
         if ($count > 0) {
             $modx->getManagerApi()->saveFormValues(19);
-            $modx->webAlertAndQuit(sprintf($_lang["duplicate_template_alias_found"], $docid, $templatealias), "index.php?a=19");
+            $modx->webAlertAndQuit(sprintf($_lang["duplicate_template_alias_found"], $docid, $templatealias), "?a=19");
         }
         //do stuff to save the new doc
         $newid = \EvolutionCMS\Models\SiteTemplate::query()->insertGetId(array(
@@ -115,10 +115,10 @@ switch ($_POST['mode']) {
         // finished emptying cache - redirect
         if ($_POST['stay'] != '') {
             $a = ($_POST['stay'] == '2') ? "16&id=$newid" : "19";
-            $header = "Location: index.php?a=" . $a . "&r=2&stay=" . $_POST['stay'];
+            $header = "Location: ?a=" . $a . "&r=2&stay=" . $_POST['stay'];
             header($header);
         } else {
-            $header = "Location: index.php?a=76&r=2";
+            $header = "Location: ?a=76&r=2";
             header($header);
         }
 
@@ -135,7 +135,7 @@ switch ($_POST['mode']) {
         $count = \EvolutionCMS\Models\SiteTemplate::where('templatename', $templatename)->where('id', '!=', $id)->count();
         if ($count > 0) {
             $modx->getManagerApi()->saveFormValues(16);
-            $modx->webAlertAndQuit(sprintf($_lang['duplicate_name_found_general'], $_lang['template'], $templatename), "index.php?a=16&id={$id}");
+            $modx->webAlertAndQuit(sprintf($_lang['duplicate_name_found_general'], $_lang['template'], $templatename), "?a=16&id={$id}");
         }
 
         if($templatealias == '')
@@ -146,7 +146,7 @@ switch ($_POST['mode']) {
 
         if ($count > 0) {
             $modx->getManagerApi()->saveFormValues(16);
-            $modx->webAlertAndQuit(sprintf($_lang["duplicate_template_alias_found"], $docid, $templatealias), "index.php?a=16&id={$id}");
+            $modx->webAlertAndQuit(sprintf($_lang["duplicate_template_alias_found"], $docid, $templatealias), "?a=16&id={$id}");
         }
         //do stuff to save the edited doc
         \EvolutionCMS\Models\SiteTemplate::find($id)->update(array(
@@ -181,11 +181,11 @@ switch ($_POST['mode']) {
         // finished emptying cache - redirect
         if ($_POST['stay'] != '') {
             $a = ($_POST['stay'] == '2') ? "16&id=$id" : "19";
-            $header = "Location: index.php?a=" . $a . "&r=2&stay=" . $_POST['stay'];
+            $header = "Location: ?a=" . $a . "&r=2&stay=" . $_POST['stay'];
             header($header);
         } else {
             $modx->unlockElement(1, $id);
-            $header = "Location: index.php?a=76&r=2";
+            $header = "Location: ?a=76&r=2";
             header($header);
         }
 

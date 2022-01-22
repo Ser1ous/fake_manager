@@ -10,7 +10,7 @@ if(!isset($_GET['id'])) {
     \EvolutionCMS\Models\ActiveUserLock::query()->truncate();
     \EvolutionCMS\Models\ActiveUser::query()->truncate();
 
-	$header = "Location: index.php?a=2";
+	$header = "Location: ?a=2";
 	header($header);
 } else {
 	// Remove single locks via AJAX / window.onbeforeunload

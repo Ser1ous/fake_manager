@@ -22,7 +22,7 @@
             document.documentElement.className += ' ios';
         }
     </script>
-    <script src="media/script/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="{{ ManagerTheme::getManagerThemeDir() }}media/script/jquery/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         // GLOBAL variable modx
         var modx = {
@@ -159,11 +159,11 @@
         echo (empty($opened) ? '' : 'modx.openedArray[' . implode("] = 1;\n		modx.openedArray[", $opened) . '] = 1;') . "\n";
         ?>
     </script>
-    <script src="{{ ManagerTheme::getThemeUrl() }}js/modx.min.js?v={{ ManagerTheme::getCore()->getVersionData('version') }}"></script>
+    <script src="{{ ManagerTheme::getThemeDir() }}js/modx.min.js?v={{ ManagerTheme::getCore()->getVersionData('version') }}"></script>
     @if($modx->getConfig('show_picker'))
-    <script src="media/script/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="media/script/spectrum/spectrum.evo.min.js" type="text/javascript"></script>
-    <script src="{{ ManagerTheme::getThemeUrl() }}js/color.switcher.js" type="text/javascript"></script>
+        <script src="{{ ManagerTheme::getManagerThemeDir() }}media/script/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="{{ ManagerTheme::getManagerThemeDir() }}media/script/spectrum/spectrum.evo.min.js" type="text/javascript"></script>
+        <script src="{{ ManagerTheme::getThemeUrl() }}js/color.switcher.js" type="text/javascript"></script>
     @endif
     <?php
     // invoke OnManagerTopPrerender event
@@ -180,12 +180,12 @@
         <div class="container">
             <div class="row">
                 <div class="cell" data-evocp="bgmColor">
-                {!! $menu !!}
+                    {!! $menu !!}
                 </div>
                 <div class="cell" data-evocp="bgmColor">
                     <ul id="settings" class="nav">
                         <li id="searchform">
-                            <form action="index.php?a=71" method="post" target="main">
+                            <form action="?a=71" method="post" target="main">
                                 <input type="hidden" value="Search" name="submitok" />
                                 <label for="searchid" class="label_searchid">
                                     <i class="{{ $_style['icon_search'] }}"></i>
@@ -199,16 +199,16 @@
                                 <a href="javascript:;" class="dropdown-toggle" onclick="return false;" title="{{ ManagerTheme::getLexicon('add_resource') }}"><i class="{{ $_style['icon_plus'] }}"></i></a>
                                 <ul class="dropdown-menu">
                                     @if($modx->hasPermission('new_document'))
-                                    <li>
-                                        <a onclick="" href="index.php?a=4" target="main">
-                                            <i class="{{ $_style['icon_document'] }}"></i>{{ ManagerTheme::getLexicon('add_resource') }}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a onclick="" href="index.php?a=72" target="main">
-                                            <i class="{{ $_style['icon_chain'] }}"></i>{{ ManagerTheme::getLexicon('add_weblink') }}
-                                        </a>
-                                    </li>
+                                        <li>
+                                            <a onclick="" href="?a=4" target="main">
+                                                <i class="{{ $_style['icon_document'] }}"></i>{{ ManagerTheme::getLexicon('add_resource') }}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a onclick="" href="?a=72" target="main">
+                                                <i class="{{ $_style['icon_chain'] }}"></i>{{ ManagerTheme::getLexicon('add_weblink') }}
+                                            </a>
+                                        </li>
                                     @endif
                                     @if($modx->getConfig('use_browser') && $modx->hasPermission('assets_images'))
                                         <li>
@@ -236,80 +236,80 @@
                             <a href="javascript:;" class="dropdown-toggle" onclick="return false;">
                                 <span class="username"><?= entities($user['username'], $modx->getConfig('modx_charset')) ?></span>
                                 @if($user['photo'])
-                                <span class="icon photo" style="background-image: url(<?= MODX_SITE_URL . entities($user['photo'], $modx->getConfig('modx_charset')) ?>);"></span>
+                                    <span class="icon photo" style="background-image: url(<?= MODX_SITE_URL . entities($user['photo'], $modx->getConfig('modx_charset')) ?>);"></span>
                                 @else
-                                <span class="icon"><i class="{{ $_style['icon_user'] }}"></i></span>
+                                    <span class="icon"><i class="{{ $_style['icon_user'] }}"></i></span>
                                 @endif
                                 <i id="msgCounter"></i>
                             </a>
                             <ul class="dropdown-menu">
 
                                 @if($modx->hasPermission('change_password'))
-                                <li>
-                                    <a onclick="" href="index.php?a=28" target="main">
-                                        <i class="{{ $_style['icon_lock'] }}"></i>{{ ManagerTheme::getLexicon('change_password') }}
-                                    </a>
-                                </li>
+                                    <li>
+                                        <a onclick="" href="?a=28" target="main">
+                                            <i class="{{ $_style['icon_lock'] }}"></i>{{ ManagerTheme::getLexicon('change_password') }}
+                                        </a>
+                                    </li>
                                 @endif
                                 <li>
-                                    <a href="index.php?a=8">
+                                    <a href="?a=8">
                                         <i class="{{ $_style['icon_logout'] }}"></i>{{ ManagerTheme::getLexicon('logout') }}
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         @if($modx->hasPermission('settings') || $modx->hasPermission('view_eventlog') || $modx->hasPermission('logs') || $modx->hasPermission('help'))
-                        <li id="system" class="dropdown">
-                            <a href="javascript:;" class="dropdown-toggle" title="{{ ManagerTheme::getLexicon('system') }}" onclick="return false;"><i class="{{ $_style['icon_cogs'] }}"></i></a>
-                            <ul class="dropdown-menu">
-                                @if($modx->hasPermission('settings'))
-                                <li>
-                                    <a href="index.php?a=17" target="main">
-                                        <i class="{{ $_style['icon_sliders'] }}"></i>{{ ManagerTheme::getLexicon('edit_settings') }}
-                                    </a>
-                                </li>
-                                @endif
-                                @if($modx->hasPermission('view_eventlog'))
-                                <li>
-                                    <a href="index.php?a=70" target="main">
-                                        <i class="{{ $_style['icon_calendar'] }}"></i>{{ ManagerTheme::getLexicon('site_schedule') }}
-                                    </a>
-                                </li>
-                                @endif
-                                @if($modx->hasPermission('view_eventlog'))
-                                <li>
-                                    <a href="index.php?a=114" target="main">
-                                        <i class="{{ $_style['icon_info_triangle'] }}"></i>{{ ManagerTheme::getLexicon('eventlog_viewer') }}
-                                    </a>
-                                </li>
-                                @endif
-                                @if($modx->hasPermission('logs'))
-                                <li>
-                                    <a href="index.php?a=13" target="main">
-                                        <i class="{{ $_style['icon_user_secret'] }}"></i>{{ ManagerTheme::getLexicon('view_logging') }}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index.php?a=53" target="main">
-                                        <i class="{{ $_style['icon_info_circle'] }}"></i>{{ ManagerTheme::getLexicon('view_sysinfo') }}
-                                    </a>
-                                </li>
-                                @endif
-                                @if($modx->hasPermission('help'))
-                                <li>
-                                    <a href="index.php?a=9" target="main">
-                                        <i class="{{ $_style['icon_question_circle'] }}"></i>{{ ManagerTheme::getLexicon('help') }}
-                                    </a>
-                                </li>
-                                @endif
+                            <li id="system" class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle" title="{{ ManagerTheme::getLexicon('system') }}" onclick="return false;"><i class="{{ $_style['icon_cogs'] }}"></i></a>
+                                <ul class="dropdown-menu">
+                                    @if($modx->hasPermission('settings'))
+                                        <li>
+                                            <a href="?a=17" target="main">
+                                                <i class="{{ $_style['icon_sliders'] }}"></i>{{ ManagerTheme::getLexicon('edit_settings') }}
+                                            </a>
+                                        </li>
+                                    @endif
+                                    @if($modx->hasPermission('view_eventlog'))
+                                        <li>
+                                            <a href="?a=70" target="main">
+                                                <i class="{{ $_style['icon_calendar'] }}"></i>{{ ManagerTheme::getLexicon('site_schedule') }}
+                                            </a>
+                                        </li>
+                                    @endif
+                                    @if($modx->hasPermission('view_eventlog'))
+                                        <li>
+                                            <a href="?a=114" target="main">
+                                                <i class="{{ $_style['icon_info_triangle'] }}"></i>{{ ManagerTheme::getLexicon('eventlog_viewer') }}
+                                            </a>
+                                        </li>
+                                    @endif
+                                    @if($modx->hasPermission('logs'))
+                                        <li>
+                                            <a href="?a=13" target="main">
+                                                <i class="{{ $_style['icon_user_secret'] }}"></i>{{ ManagerTheme::getLexicon('view_logging') }}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="?a=53" target="main">
+                                                <i class="{{ $_style['icon_info_circle'] }}"></i>{{ ManagerTheme::getLexicon('view_sysinfo') }}
+                                            </a>
+                                        </li>
+                                    @endif
+                                    @if($modx->hasPermission('help'))
+                                        <li>
+                                            <a href="?a=9" target="main">
+                                                <i class="{{ $_style['icon_question_circle'] }}"></i>{{ ManagerTheme::getLexicon('help') }}
+                                            </a>
+                                        </li>
+                                    @endif
 
-                                <?php
-                                $style = $modx->getConfig('settings_version') !== $modx->getVersionData('version') ? 'style="color:#ffff8a;"' : '';
-                                $version = 'Evolution CMS';
+                                    <?php
+                                    $style = $modx->getConfig('settings_version') !== $modx->getVersionData('version') ? 'style="color:#ffff8a;"' : '';
+                                    $version = 'Evolution CMS';
                                     echo '<li><span class="dropdown-item" title="' . $modx->getPhpCompat()->entities($modx->getConfig('site_name')) . ' &ndash; ' . $modx->getVersionData('full_appname') . '" ' . $style . '>' . $version . ' ' . $modx->getConfig('settings_version') . '</span></li>';
-                                ?>
-                            </ul>
-                        </li>
+                                    ?>
+                                </ul>
+                            </li>
                         @endif
                         @if($modx->getConfig('show_fullscreen_btn'))
                             <li id="fullscreen">
@@ -330,11 +330,11 @@
                 <div class="tab-row"><h2 id="evo-tab-home" class="tab selected" data-target="evo-tab-page-home"><i class="{{ $_style['icon_home'] }}"></i></h2></div>
             </div>
             <div id="evo-tab-page-home" class="evo-tab-page show iframe-scroller">
-                <iframe id="mainframe" src="index.php?a={{ $initMainframeAction }}" scrolling="auto" frameborder="0" onload="modx.main.onload(event);"></iframe>
+                <iframe id="mainframe" src="?a={{ $initMainframeAction }}" scrolling="auto" frameborder="0" onload="modx.main.onload(event);"></iframe>
             </div>
         @else
             <div class="iframe-scroller">
-                <iframe id="mainframe" name="main" src="index.php?a={{ $initMainframeAction }}" scrolling="auto" frameborder="0" onload="modx.main.onload(event);"></iframe>
+                <iframe id="mainframe" name="main" src="?a={{ $initMainframeAction }}" scrolling="auto" frameborder="0" onload="modx.main.onload(event);"></iframe>
             </div>
         @endif
         <script>
@@ -465,14 +465,14 @@ if(!function_exists('constructLink')) {
             document.getElementById('treeMenu_openelements').onclick = function(e) {
                 e.preventDefault();
                 if (modx.config.global_tabs && !e.shiftKey) {
-                    modx.tabs({url: '{{ MODX_MANAGER_URL }}index.php?a=76', title: '{{ ManagerTheme::getLexicon('elements') }}'});
+                    modx.tabs({url: '{{ MODX_MANAGER_URL }}?a=76', title: '{{ ManagerTheme::getLexicon('elements') }}'});
                 } else {
                     var randomNum = '{{ ManagerTheme::getLexicon('elements') }}';
                     if (e.shiftKey) {
                         randomNum += ' #' + Math.floor((Math.random() * 999999) + 1);
                     }
                     modx.openWindow({
-                        url: '{{ MODX_MANAGER_URL }}index.php?a=76',
+                        url: '{{ MODX_MANAGER_URL }}?a=76',
                         title: randomNum
                     });
                 }

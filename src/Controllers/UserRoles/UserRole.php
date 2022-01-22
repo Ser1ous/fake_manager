@@ -39,7 +39,7 @@ class UserRole extends AbstractController implements ManagerTheme\PageController
             Models\RolePermissions::query()->where('role_id', $id)->delete();
             Models\UserRoleVar::where('roleid', $id)->delete();
             Models\UserRole::query()->where('id', $id)->delete();
-            header('Location: index.php?a=86&tab=0');
+            header('Location: ?a=86&tab=0');
         }
         if (isset($_POST['a'])) {
             $this->updateOrCreate();
@@ -58,7 +58,7 @@ class UserRole extends AbstractController implements ManagerTheme\PageController
         }
         if (!isset($_POST['name']) || $_POST['name'] == '') {
             $this->managerTheme->getCore()->getManagerApi()->saveFormValues();
-            $this->managerTheme->getCore()->webAlertAndQuit("Please enter a name for this role!", "index.php?a={$mode}" . ($mode = 35 ? "&id={$id}" : ""));
+            $this->managerTheme->getCore()->webAlertAndQuit("Please enter a name for this role!", "?a={$mode}" . ($mode = 35 ? "&id={$id}" : ""));
         }
 
         $role = Models\UserRole::findOrNew($id);
@@ -104,7 +104,7 @@ class UserRole extends AbstractController implements ManagerTheme\PageController
         }
 
         $this->managerTheme->getCore()->getManagerApi()->clearSavedFormValues();
-        header('Location: index.php?a=35&id=' . $role->getKey() . '&r=9');
+        header('Location: ?a=35&id=' . $role->getKey() . '&r=9');
     }
 
     /**

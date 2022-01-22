@@ -29,7 +29,7 @@ if($limit > 0) {
             <ul>
                 <?php
                 foreach ($siteContents as $row){
-                    echo '<li><span style="width: 200px"><a href="index.php?id=' . $row->id . '&a=27">' . $row->pagetitle . '</a></span>' . ($row->introtext != '' ? ' - ' . $row->introtext : '') . '</li>';
+                    echo '<li><span style="width: 200px"><a href="?id=' . $row->id . '&a=27">' . $row->pagetitle . '</a></span>' . ($row->introtext != '' ? ' - ' . $row->introtext : '') . '</li>';
                 }
                 ?>
             </ul>
@@ -66,5 +66,5 @@ $modx->invokeEvent("OnTempFormDelete", array(
 $modx->clearCache('full');
 
 // finished emptying cache - redirect
-$header = "Location: index.php?a=76&r=2";
+$header = "Location: ?a=76&r=2";
 header($header);

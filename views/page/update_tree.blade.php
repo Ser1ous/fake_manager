@@ -5,7 +5,7 @@
             var actions = {
                 cancel: function() {
                     documentDirty = false;
-                    document.location.href = 'index.php?a=2';
+                    document.location.href = '?a=2';
                 }
             };
         </script>
