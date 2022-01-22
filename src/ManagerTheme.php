@@ -322,6 +322,15 @@ class ManagerTheme implements ManagerThemeInterface
      * @param bool $full
      * @return string
      */
+    public function getManagerThemeDir($full = true): string
+    {
+        return '/manager_theme/';
+    }
+
+    /**
+     * @param bool $full
+     * @return string
+     */
     public function getThemeStyleDir($full = true): string
     {
         return ($full ? EVO_CORE_PATH : '') . 'storage/manager/media/style/' . $this->getTheme() . '/';
