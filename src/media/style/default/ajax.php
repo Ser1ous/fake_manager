@@ -1,28 +1,28 @@
 <?php
 
 use EvolutionCMS\Models\SiteContent;
-
-define('IN_MANAGER_MODE', true);  // we use this to make sure files are accessed through
-define('MODX_API_MODE', true);
-
-if (file_exists(dirname(__DIR__, 3) . '/config.php')) {
-    $config = require dirname(__DIR__) . '/config.php';
-} elseif (file_exists(dirname(__DIR__, 4) . '/config.php')) {
-    $config = require dirname(__DIR__, 4) . '/config.php';
-} else {
-    $config = [
-        'root' => dirname(__DIR__, 4)
-    ];
-}
-
-if (!empty($config['root']) && file_exists($config['root'] . '/index.php')) {
-    require_once $config['root'] . '/index.php';
-} else {
-    echo "<h3>Unable to load configuration settings</h3>";
-    echo "Please run the Evolution CMS <a href='../install'>install utility</a>";
-    exit;
-}
-
+//
+//define('IN_MANAGER_MODE', true);  // we use this to make sure files are accessed through
+//define('MODX_API_MODE', true);
+//
+//if (file_exists(dirname(__DIR__, 3) . '/config.php')) {
+//    $config = require dirname(__DIR__) . '/config.php';
+//} elseif (file_exists(dirname(__DIR__, 4) . '/config.php')) {
+//    $config = require dirname(__DIR__, 4) . '/config.php';
+//} else {
+//    $config = [
+//        'root' => dirname(__DIR__, 4)
+//    ];
+//}
+//
+//if (!empty($config['root']) && file_exists($config['root'] . '/index.php')) {
+//    require_once $config['root'] . '/index.php';
+//} else {
+//    echo "<h3>Unable to load configuration settings</h3>";
+//    echo "Please run the Evolution CMS <a href='../install'>install utility</a>";
+//    exit;
+//}
+$modx = EvolutionCMS();
 $modx->getSettings();
 
 if (!isset($_SESSION['mgrValidated']) || !isset($_SERVER['HTTP_X_REQUESTED_WITH']) || (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') || ($_SERVER['REQUEST_METHOD'] != 'POST')) {
@@ -135,7 +135,7 @@ if (isset($action)) {
                         }
 
                         if ($modx->hasPermission('new_template')) {
-                            $output .= '<li><a id="a_19" href="?a=19" target="main"><i class="' . $_style['icon_add'] . '"></i>' . $_lang['new_template'] . '</a></li>';
+                            $output .= '<li><a id="a_19" href="index.php?a=19" target="main"><i class="' . $_style['icon_add'] . '"></i>' . $_lang['new_template'] . '</a></li>';
                         }
 
                         break;
@@ -160,7 +160,7 @@ if (isset($action)) {
                         }
 
                         if ($modx->hasPermission('edit_template') && $modx->hasPermission('edit_snippet') && $modx->hasPermission('edit_chunk') && $modx->hasPermission('edit_plugin')) {
-                            $output .= '<li><a id="a_300" href="?a=300" target="main"><i class="' . $_style['icon_add'] . '"></i>' . $_lang['new_tmplvars'] . '</a></li>';
+                            $output .= '<li><a id="a_300" href="index.php?a=300" target="main"><i class="' . $_style['icon_add'] . '"></i>' . $_lang['new_tmplvars'] . '</a></li>';
                         }
 
                         break;
@@ -174,7 +174,7 @@ if (isset($action)) {
                         }
 
                         if ($modx->hasPermission('new_chunk')) {
-                            $output .= '<li><a id="a_77" href="?a=77" target="main"><i class="' . $_style['icon_add'] . '"></i>' . $_lang['new_htmlsnippet'] . '</a></li>';
+                            $output .= '<li><a id="a_77" href="index.php?a=77" target="main"><i class="' . $_style['icon_add'] . '"></i>' . $_lang['new_htmlsnippet'] . '</a></li>';
                         }
 
                         break;
@@ -188,7 +188,7 @@ if (isset($action)) {
                         }
 
                         if ($modx->hasPermission('new_snippet')) {
-                            $output .= '<li><a id="a_23" href="?a=23" target="main"><i class="' . $_style['icon_add'] . '"></i>' . $_lang['new_snippet'] . '</a></li>';
+                            $output .= '<li><a id="a_23" href="index.php?a=23" target="main"><i class="' . $_style['icon_add'] . '"></i>' . $_lang['new_snippet'] . '</a></li>';
                         }
 
                         break;
@@ -202,7 +202,7 @@ if (isset($action)) {
                         }
 
                         if ($modx->hasPermission('new_plugin')) {
-                            $output .= '<li><a id="a_101" href="?a=101" target="main"><i class="' . $_style['icon_add'] . '"></i>' . $_lang['new_plugin'] . '</a></li>';
+                            $output .= '<li><a id="a_101" href="index.php?a=101" target="main"><i class="' . $_style['icon_add'] . '"></i>' . $_lang['new_plugin'] . '</a></li>';
                         }
 
                         break;
@@ -223,7 +223,7 @@ if (isset($action)) {
                             continue;
                         }
 
-                        $items .= '<li class="item ' . ($row['disabled'] ? 'disabled' : '') . ($row['locked'] ? ' locked' : '') . '"><a id="a_' . $a . '__id_' . $row['id'] . '" href="?a=' . $a . '&id=' . $row['id'] . '" target="main" data-parent-id="a_76__elements_' . $elements . '">' . entities($row['name'], $modx->getConfig('modx_charset')) . ' <small>(' . $row['id'] . ')</small></a></li>' . "\n";
+                        $items .= '<li class="item ' . ($row['disabled'] ? 'disabled' : '') . ($row['locked'] ? ' locked' : '') . '"><a id="a_' . $a . '__id_' . $row['id'] . '" href="index.php?a=' . $a . '&id=' . $row['id'] . '" target="main" data-parent-id="a_76__elements_' . $elements . '">' . entities($row['name'], $modx->getConfig('modx_charset')) . ' <small>(' . $row['id'] . ')</small></a></li>' . "\n";
                     }
                 }
 
@@ -258,7 +258,7 @@ if (isset($action)) {
 
 
             if ($modx->hasPermission('new_user')) {
-                $output .= '<li><a id="a_11" href="?a=11" target="main"><i class="' . $_style['icon_add'] . '"></i>' . $_lang['new_user'] . '</a></li>';
+                $output .= '<li><a id="a_11" href="index.php?a=11" target="main"><i class="' . $_style['icon_add'] . '"></i>' . $_lang['new_user'] . '</a></li>';
             }
 
             if ($count = $sql->count()) {
@@ -266,7 +266,7 @@ if (isset($action)) {
                     $output .= '<li class="item-input"><input type="text" name="filter" class="dropdown-item form-control form-control-sm" autocomplete="off" /></li>';
                 }
                 foreach ($sql->take($limit)->get() as $row) {
-                    $items .= '<li class="item ' . ($row->blocked ? 'disabled' : '') . '"><a id="a_' . $a . '__id_' . $row->id . '" href="?a=' . $a . '&id=' . $row->id . '" target="main">' . entities($row->username, $modx->getConfig('modx_charset')) . ' <small>(' . $row->id . ')</small></a></li>';
+                    $items .= '<li class="item ' . ($row->blocked ? 'disabled' : '') . '"><a id="a_' . $a . '__id_' . $row->id . '" href="index.php?a=' . $a . '&id=' . $row->id . '" target="main">' . entities($row->username, $modx->getConfig('modx_charset')) . ' <small>(' . $row->id . ')</small></a></li>';
                 }
             }
 
@@ -296,7 +296,7 @@ if (isset($action)) {
             }
 
             if ($modx->hasPermission('new_user')) {
-                $output .= '<li><a id="a_87" href="?a=87" target="main"><i class="' . $_style['icon_add'] . '"></i>' . $_lang['new_web_user'] . '</a></li>';
+                $output .= '<li><a id="a_87" href="index.php?a=87" target="main"><i class="' . $_style['icon_add'] . '"></i>' . $_lang['new_web_user'] . '</a></li>';
             }
 
             if ($count = $sql->count()) {
@@ -304,7 +304,7 @@ if (isset($action)) {
                     $output .= '<li class="item-input"><input type="text" name="filter" class="dropdown-item form-control form-control-sm" autocomplete="off" /></li>';
                 }
                 foreach ($sql->take($limit)->get() as $row) {
-                    $items .= '<li class="item ' . ($row->blocked ? 'disabled' : '') . '"><a id="a_' . $a . '__id_' . $row->id . '" href="?a=' . $a . '&id=' . $row->id . '" target="main">' . entities($row->username, $modx->getConfig('modx_charset')) . ' <small>(' . $row->id . ')</small></a></li>';
+                    $items .= '<li class="item ' . ($row->blocked ? 'disabled' : '') . '"><a id="a_' . $a . '__id_' . $row->id . '" href="index.php?a=' . $a . '&id=' . $row->id . '" target="main">' . entities($row->username, $modx->getConfig('modx_charset')) . ' <small>(' . $row->id . ')</small></a></li>';
                 }
             }
 
@@ -334,14 +334,14 @@ if (isset($action)) {
 
                         if (!is_null($snippet)) {
                             $row = $snippet->toArray();
-                            
+
                             $contextmenu = array(
                                 'header' => array(
                                     'innerHTML' => '<i class="' . $_style['icon_code'] . '"></i> ' . entities($row['name'], $modx->getConfig('modx_charset'))
                                 ),
                                 'item' => array(
                                     'innerHTML' => '<i class="' . $_style['icon_edit'] . '"></i> ' . $_lang['edit'],
-                                    'url' => "?a=22&id=" . $row['id']
+                                    'url' => "index.php?a=22&id=" . $row['id']
                                 )
                             );
                             if (!empty($row['description'])) {
@@ -357,7 +357,7 @@ if (isset($action)) {
                                 ),
                                 'item' => array(
                                     'innerHTML' => '<i class="' . $_style['icon_add'] . '"></i> ' . $_lang['new_snippet'],
-                                    'url' => "?a=23&itemname=" . entities($name, $modx->getConfig('modx_charset'))
+                                    'url' => "index.php?a=23&itemname=" . entities($name, $modx->getConfig('modx_charset'))
                                 )
                             );
                         }
@@ -376,7 +376,7 @@ if (isset($action)) {
                                 ),
                                 'item' => array(
                                     'innerHTML' => '<i class="' . $_style['icon_edit'] . '"></i> ' . $_lang['edit'],
-                                    'url' => "?a=78&id=" . $row['id']
+                                    'url' => "index.php?a=78&id=" . $row['id']
                                 )
                             );
                             if (!empty($row['description'])) {
@@ -392,7 +392,7 @@ if (isset($action)) {
                                 ),
                                 'item' => array(
                                     'innerHTML' => '<i class="' . $_style['icon_add'] . '"></i> ' . $_lang['new_htmlsnippet'],
-                                    'url' => "?a=77&itemname=" . entities($name, $modx->getConfig('modx_charset'))
+                                    'url' => "index.php?a=77&itemname=" . entities($name, $modx->getConfig('modx_charset'))
                                 )
                             );
                         }
@@ -411,7 +411,7 @@ if (isset($action)) {
                                 ),
                                 'item' => array(
                                     'innerHTML' => '<i class="' . $_style['icon_edit'] . '"></i> ' . $_lang['edit'],
-                                    'url' => "?a=78&id=" . $row['id']
+                                    'url' => "index.php?a=78&id=" . $row['id']
                                 )
                             );
                             if (!empty($row['description'])) {
@@ -432,7 +432,7 @@ if (isset($action)) {
                                     ),
                                     'item' => array(
                                         'innerHTML' => '<i class="' . $_style['icon_edit'] . '"></i> ' . $_lang['edit'],
-                                        'url' => "?a=22&id=" . $row['id']
+                                        'url' => "index.php?a=22&id=" . $row['id']
                                     )
                                 );
                                 if (!empty($row['description'])) {
@@ -448,11 +448,11 @@ if (isset($action)) {
                                     ),
                                     'item' => array(
                                         'innerHTML' => '<i class="' . $_style['icon_add'] . '"></i> ' . $_lang['new_htmlsnippet'],
-                                        'url' => "?a=77&itemname=" . entities($name, $modx->getConfig('modx_charset'))
+                                        'url' => "index.php?a=77&itemname=" . entities($name, $modx->getConfig('modx_charset'))
                                     ),
                                     'item2' => array(
                                         'innerHTML' => '<i class="' . $_style['icon_add'] . '"></i> ' . $_lang['new_snippet'],
-                                        'url' => "?a=23&itemname=" . entities($name, $modx->getConfig('modx_charset'))
+                                        'url' => "index.php?a=23&itemname=" . entities($name, $modx->getConfig('modx_charset'))
                                     )
                                 );
                             }
@@ -518,7 +518,7 @@ if (isset($action)) {
                                 ),
                                 'item' => array(
                                     'innerHTML' => '<i class="' . $_style['icon_edit'] . '"></i> ' . $_lang['edit'],
-                                    'url' => "?a=301&id=" . $row['id']
+                                    'url' => "index.php?a=301&id=" . $row['id']
                                 )
                             );
                             if (!empty($row['description'])) {
@@ -534,7 +534,7 @@ if (isset($action)) {
                                 ),
                                 'item' => array(
                                     'innerHTML' => '<i class="' . $_style['icon_add'] . '"></i> ' . $_lang['new_tmplvars'],
-                                    'url' => "?a=300&itemname=" . entities($name, $modx->getConfig('modx_charset'))
+                                    'url' => "index.php?a=300&itemname=" . entities($name, $modx->getConfig('modx_charset'))
                                 )
                             );
                         }

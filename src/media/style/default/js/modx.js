@@ -130,7 +130,7 @@
                                 $('.nav ul.selected', $mm).removeClass('selected');
                                 timer = setTimeout(function() {
                                     var href = self.firstElementChild.href && self.firstElementChild.target === 'main' ? self.firstElementChild.href.split('?')[1] + '&elements=' + self.id : '';
-                                    modx.post(modx.MODX_MANAGER_URL + 'media/style/' + modx.config.theme + '/ajax.php', href, function(data) {
+                                    modx.post(modx.MODX_MANAGER_URL + modx.config.theme + '/ajax', href, function(data) {
                                         if (data) {
                                             if (modx.isMobile || w.innerWidth < modx.minWidth) {
                                                 data = '<li class="dropdown-back"><span class="dropdown-item"><i class="' + modx.style.icon_angle_left + '"></i>' + modx.lang.paging_prev + '</span></li>' + data;
@@ -232,7 +232,7 @@
                                 }
                             }
                         } else {
-                            modx.post(modx.MODX_MANAGER_URL + 'media/style/' + modx.config.theme + '/ajax.php', href + '&filter=' + input.value, function(data) {
+                            modx.post(modx.MODX_MANAGER_URL + modx.config.theme + '/ajax', href + '&filter=' + input.value, function(data) {
                                 index = -1;
                                 $('.item', ul).remove();
                                 $(ul).append(data).on('mouseenter', '.item', function(e) {
@@ -383,7 +383,7 @@
                             n = !!name.replace(/^\d+$/, '');
                     if (name && n) {
                         e.preventDefault();
-                        modx.post(modx.MODX_MANAGER_URL + 'media/style/' + modx.config.theme + '/ajax.php', {
+                        modx.post(modx.MODX_MANAGER_URL + modx.config.theme + '/ajax', {
                             a: 'modxTagHelper',
                             name: name,
                             type: type
@@ -912,7 +912,7 @@
                     modx.tree.restoreTree();
                     return;
                 }
-                modx.post(modx.MODX_MANAGER_URL + 'media/style/' + modx.config.theme + '/ajax.php', {
+                modx.post(modx.MODX_MANAGER_URL + modx.config.theme + '/ajax', {
                     a: 'movedocument',
                     id: id,
                     parent: parent,
@@ -984,7 +984,7 @@
                     if (rpcNodeText === '' || rpcNodeText.indexOf(loadText) > 0) {
                         var folderState = this.getFolderState();
                         d.getElementById('treeloader').classList.add('visible');
-                        modx.post(modx.MODX_MANAGER_URL + 'media/style/' + modx.config.theme + '/ajax.php', 'a=1&f=nodes&indent=' + el.dataset.indent + '&parent=' + id + '&expandAll=' + el.dataset.expandall + folderState, function(r) {
+                        modx.post(modx.MODX_MANAGER_URL + modx.config.theme + '/ajax', 'a=1&f=nodes&indent=' + el.dataset.indent + '&parent=' + id + '&expandAll=' + el.dataset.expandall + folderState, function(r) {
                             modx.tree.rpcLoadData(r);
                             modx.tree.draggable();
                         });
@@ -1347,7 +1347,7 @@
                     d.getElementById('treeloader').classList.add('visible');
                     this.setItemToChange();
                     this.rpcNode = d.getElementById('treeRoot');
-                    modx.post(modx.MODX_MANAGER_URL + 'media/style/' + modx.config.theme + '/ajax.php', 'a=1&f=nodes&indent=1&parent=' + modx.tree_parent + '&expandAll=2&id=' + this.itemToChange, function(r) {
+                    modx.post(modx.MODX_MANAGER_URL + modx.config.theme + '/ajax', 'a=1&f=nodes&indent=1&parent=' + modx.tree_parent + '&expandAll=2&id=' + this.itemToChange, function(r) {
                         modx.tree.rpcLoadData(r);
                         modx.tree.draggable();
                     });
@@ -1356,7 +1356,7 @@
             expandTree: function() {
                 this.rpcNode = d.getElementById('treeRoot');
                 d.getElementById('treeloader').classList.add('visible');
-                modx.post(modx.MODX_MANAGER_URL + 'media/style/' + modx.config.theme + '/ajax.php', 'a=1&f=nodes&indent=1&parent=' + modx.tree_parent + '&expandAll=1&id=' + this.itemToChange, function(r) {
+                modx.post(modx.MODX_MANAGER_URL + modx.config.theme + '/ajax', 'a=1&f=nodes&indent=1&parent=' + modx.tree_parent + '&expandAll=1&id=' + this.itemToChange, function(r) {
                     modx.tree.rpcLoadData(r);
                     modx.tree.saveFolderState();
                     modx.tree.draggable();
@@ -1365,7 +1365,7 @@
             collapseTree: function() {
                 this.rpcNode = d.getElementById('treeRoot');
                 d.getElementById('treeloader').classList.add('visible');
-                modx.post(modx.MODX_MANAGER_URL + 'media/style/' + modx.config.theme + '/ajax.php', 'a=1&f=nodes&indent=1&parent=' + modx.tree_parent + '&expandAll=0&id=' + this.itemToChange, function(r) {
+                modx.post(modx.MODX_MANAGER_URL + modx.config.theme + '/ajax', 'a=1&f=nodes&indent=1&parent=' + modx.tree_parent + '&expandAll=0&id=' + this.itemToChange, function(r) {
                     modx.openedArray = [];
                     modx.tree.saveFolderState();
                     modx.tree.rpcLoadData(r);
@@ -1377,7 +1377,7 @@
                 d.getElementById('treeloader').classList.add('visible');
                 var a = d.sortFrm;
                 var b = 'a=1&f=nodes&indent=1&parent=' + modx.tree_parent + '&expandAll=2&dt=' + a.dt.value + '&tree_sortby=' + a.sortby.value + '&tree_sortdir=' + a.sortdir.value + '&tree_nodename=' + a.nodename.value + '&id=' + this.itemToChange + '&showonlyfolders=' + a.showonlyfolders.value;
-                modx.post(modx.MODX_MANAGER_URL + 'media/style/' + modx.config.theme + '/ajax.php', b, function(r) {
+                modx.post(modx.MODX_MANAGER_URL + modx.config.theme + '/ajax', b, function(r) {
                     modx.tree.rpcLoadData(r);
                     modx.tree.draggable();
                 });
@@ -1397,7 +1397,7 @@
                 return a;
             },
             saveFolderState: function() {
-                modx.post(modx.MODX_MANAGER_URL + 'media/style/' + modx.config.theme + '/ajax.php', 'a=1&f=nodes&savestateonly=1' + this.getFolderState());
+                modx.post(modx.MODX_MANAGER_URL + modx.config.theme + '/ajax', 'a=1&f=nodes&savestateonly=1' + this.getFolderState());
             },
             showSorter: function(e) {
                 e = e || w.event;
@@ -2276,7 +2276,7 @@
 
         getLockedElements: function(a, b, c) {
             if (modx.typesactions[a] && b) {
-                modx.post(modx.MODX_MANAGER_URL + 'media/style/' + modx.config.theme + '/ajax.php', {
+                modx.post(modx.MODX_MANAGER_URL + modx.config.theme + '/ajax', {
                     a: 'getLockedElements',
                     id: modx.main.getQueryVariable('id', w.main.location.search),
                     type: modx.typesactions[modx.getActionFromUrl(w.main.location.href)]
