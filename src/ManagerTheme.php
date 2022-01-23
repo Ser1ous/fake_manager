@@ -315,7 +315,7 @@ class ManagerTheme implements ManagerThemeInterface
      */
     public function getThemeDir($full = true): string
     {
-        return ($full ? '/manager_theme' : '') . '/media/style/' . $this->getTheme() . '/';
+        return ($full ? '/manager_theme/' : '') . 'media/style/' . $this->getTheme() . '/';
     }
 
     /**
@@ -348,6 +348,11 @@ class ManagerTheme implements ManagerThemeInterface
     public function getThemeUrl(): string
     {
         return MODX_MANAGER_URL . $this->getThemeDir(false);
+    }
+
+    public function getThemeUrlAlt(): string
+    {
+        return MODX_MANAGER_THEME_URL . $this->getThemeDir(false);
     }
 
     /**
@@ -470,7 +475,7 @@ class ManagerTheme implements ManagerThemeInterface
         /********************************************************************/
         // log action, unless it's a frame request
         if ($action > 0 && \in_array($action, [1, 2, 7], true) === false) {
-            $log = new Legacy\LogHandler;
+            $log = new \EvolutionCMS\Legacy\LogHandler;
             $log->initAndWriteLog();
         }
         /********************************************************************/
@@ -821,7 +826,7 @@ class ManagerTheme implements ManagerThemeInterface
 
     public function css()
     {
-        $css = $this->getThemeUrl() . 'style.css';
+        $css = $this->getThemeUrlAlt() . 'style.css';
         $minCssName = 'css/styles.min.css';
 
         if (!file_exists($this->getThemeDir() . $minCssName) && is_writable($this->getThemeDir() . 'css')) {

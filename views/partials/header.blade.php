@@ -44,7 +44,7 @@
         evo.MODX_MANAGER_URL = '{{  MODX_MANAGER_URL }}';
         evo.config.which_browser = '{{ $modx->getConfig('which_browser') }}';
     </script>
-    <script src="media/script/main.js"></script>
+    <script src="{{ MODX_MANAGER_THEME_URL }}media/script/main.js"></script>
     @if (get_by_key($_REQUEST, 'r', '', 'is_numeric'))
         <script>doRefresh({{ $_REQUEST['r'] }});</script>
     @endif
