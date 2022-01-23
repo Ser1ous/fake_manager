@@ -170,21 +170,21 @@ class Frame extends AbstractController implements ManagerTheme\PageControllerInt
 
         $themeDir = $this->managerTheme->getThemeDir();
 
-        if (file_exists($themeDir . 'CSSMinify.php')) {
-            if (!file_exists($themeDir . 'css/styles.min.css') && is_writable($themeDir . 'css')) {
-                $cssFiles = include_once $themeDir . 'CSSMinify.php';
+        if (file_exists(MODX_BASE_PATH. $themeDir . 'CSSMinify.php')) {
+            if (!file_exists(MODX_BASE_PATH. $themeDir . 'css/styles.min.css') && is_writable(MODX_BASE_PATH. $themeDir . 'css')) {
+                $cssFiles = include_once MODX_BASE_PATH. $themeDir . 'CSSMinify.php';
                 if (is_array($cssFiles) && count($cssFiles)) {
                     $minifier = new \EvolutionCMS\Support\Formatter\CSSMinify();
                     foreach ($cssFiles as $item) {
                         $minifier->addFile($item);
                     }
-                    file_put_contents($themeDir . 'css/styles.min.css', $minifier->minify());
+                    file_put_contents(MODX_BASE_PATH . $themeDir . 'css/styles.min.css', $minifier->minify());
 
                 }
             }
 
-            if (file_exists($themeDir . 'css/styles.min.css')) {
-                $this->parameters['css'] = $this->managerTheme->getThemeDir(false) . 'css/styles.min.css?v=' . EVO_INSTALL_TIME;
+            if (file_exists(MODX_BASE_PATH. $themeDir . 'css/styles.min.css')) {
+                $this->parameters['css'] = $this->managerTheme->getThemeDir() . 'css/styles.min.css?v=' . EVO_INSTALL_TIME;
             }
         }
 

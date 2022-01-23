@@ -396,7 +396,7 @@ class ManagerTheme implements ManagerThemeInterface
         if (is_file(MODX_MANAGER_THEME_PATH . '/media/style/' . $theme . '/' . $filepath)) {
             $element = MODX_MANAGER_THEME_PATH . '/media/style/' . $theme . '/' . $filepath;
         } else {
-            $element = MODX_MANAGER_THEME_PATH . ltrim($filepath, '/');
+            $element = MODX_MANAGER_PATH . ltrim($filepath, '/');
         }
 
         return $element;
