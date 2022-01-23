@@ -11,8 +11,8 @@
         {!! Tracy\Debugger::renderLoader() !!}
     @endif
     <link rel="stylesheet" type="text/css" href="{{ ManagerTheme::css() }}"/>
-    <script type="text/javascript" src="media/script/tabpane.js"></script>
-    <script type="text/javascript" src="{{ $modx->getConfig('mgr_jquery_path') }}"></script>
+    <script type="text/javascript" src="{{ MODX_MANAGER_THEME_URL }}media/script/tabpane.js"></script>
+    <script type="text/javascript" src="{{ MODX_MANAGER_THEME_URL }}{{ $modx->getConfig('mgr_jquery_path') }}"></script>
     @if ($modx->getConfig('show_picker') === true)
         <script src="{{ ManagerTheme::getThemeUrl() }}/js/color.switcher.js" type="text/javascript"></script>
     @endif
@@ -24,7 +24,7 @@
             var evo = {};
         }
         if (!evo.config) {
-          evo.config = {};
+            evo.config = {};
         }
         var actions,
             actionStay = [],
