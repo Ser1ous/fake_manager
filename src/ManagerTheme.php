@@ -185,8 +185,8 @@ class ManagerTheme implements ManagerThemeInterface
     {
         $this->core = $core;
 
-        $this->getCore()['view']->addNamespace('manager', MODX_MANAGER_PATH . '/media/style/' . $theme . '/views/');
-        $this->getCore()['view']->addNamespace('manager', MODX_MANAGER_PATH . '/views/');
+        $this->getCore()['view']->addNamespace('manager', MODX_MANAGER_THEME_PATH . '/media/style/' . $theme . '/views/');
+        $this->getCore()['view']->addNamespace('manager', MODX_MANAGER_THEME_PATH . '/views/');
 
         $this->theme = $theme;
 
@@ -388,10 +388,10 @@ class ManagerTheme implements ManagerThemeInterface
             $theme = $this->getTheme();
         }
 
-        if (is_file(MODX_MANAGER_PATH . '/media/style/' . $theme . '/' . $filepath)) {
-            $element = MODX_MANAGER_PATH . '/media/style/' . $theme . '/' . $filepath;
+        if (is_file(MODX_MANAGER_THEME_PATH . '/media/style/' . $theme . '/' . $filepath)) {
+            $element = MODX_MANAGER_THEME_PATH . '/media/style/' . $theme . '/' . $filepath;
         } else {
-            $element = MODX_MANAGER_PATH . ltrim($filepath, '/');
+            $element = MODX_MANAGER_THEME_PATH . ltrim($filepath, '/');
         }
 
         return $element;
@@ -592,7 +592,7 @@ class ManagerTheme implements ManagerThemeInterface
     public function getTemplate($name, $config = null)
     {
         if (!empty($config) && empty($this->getCore()->getConfig($config))) {
-            $this->getCore()->setConfig($config, MODX_MANAGER_PATH . 'media/style/common/' . $name . '.tpl');
+            $this->getCore()->setConfig($config, MODX_MANAGER_THEME_PATH . 'media/style/common/' . $name . '.tpl');
         }
 
         $target = $this->getCore()->getConfig($config);
@@ -805,8 +805,8 @@ class ManagerTheme implements ManagerThemeInterface
     public function getCssFiles()
     {
         return [
-            'bootstrap' => MODX_MANAGER_PATH . 'media/style/common/bootstrap/css/bootstrap.min.css',
-            'font-awesome' => MODX_MANAGER_PATH . 'media/style/common/font-awesome/css/font-awesome.min.css',
+            'bootstrap' => MODX_MANAGER_THEME_PATH . 'media/style/common/bootstrap/css/bootstrap.min.css',
+            'font-awesome' => MODX_MANAGER_THEME_PATH . 'media/style/common/font-awesome/css/font-awesome.min.css',
             'fonts' => $this->getThemeDir() . 'css/fonts.css',
             'forms' => $this->getThemeDir() . 'css/forms.css',
             'mainmenu' => $this->getThemeDir() . 'css/mainmenu.css',

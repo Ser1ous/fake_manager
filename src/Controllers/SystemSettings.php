@@ -138,12 +138,12 @@ class SystemSettings extends AbstractController implements ManagerTheme\PageCont
     protected function parameterThemes()
     {
         $themes = [];
-        $dir = dir(MODX_MANAGER_PATH . 'media/style/');
+        $dir = dir(MODX_MANAGER_THEME_PATH . 'media/style/');
         while ($file = $dir->read()) {
             if (strpos($file, '.') === 0 || $file === 'common') {
                 continue;
             }
-            if (!is_dir(MODX_MANAGER_PATH . 'media/style/' . $file)) {
+            if (!is_dir(MODX_MANAGER_THEME_PATH . 'media/style/' . $file)) {
                 continue;
             }
 
@@ -157,7 +157,7 @@ class SystemSettings extends AbstractController implements ManagerTheme\PageCont
     protected function parameterFileBrowsers()
     {
         $out = [];
-        foreach (glob(MODX_MANAGER_PATH . 'media/browser/*', GLOB_ONLYDIR) as $dir) {
+        foreach (glob(MODX_MANAGER_THEME_PATH . 'media/browser/*', GLOB_ONLYDIR) as $dir) {
             $dir = str_replace('\\', '/', $dir);
             $out[] = substr($dir, strrpos($dir, '/') + 1);
         }
