@@ -17,7 +17,7 @@
         </script>
         <script src="{{ MODX_MANAGER_THEME_URL }}media/script/mutate_settings.js"></script>
     @endpush
-    <form name="settings" method="post" action="">
+    <form name="settings" method="post" action="{{ MODX_MANAGER_URL }}">
         <input type="hidden" name="a" value="30">
         <!-- this field is used to check site settings have been entered/ updated after install or upgrade -->
         <input type="hidden" name="site_id" value="{{ get_by_key($modx->config, 'site_id') }}" />
