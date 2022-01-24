@@ -21,6 +21,7 @@ class ManagerThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/mgr.php');
         $this->loadViewsFrom(__DIR__ . '/../../views', $this->namespace);
     }
 

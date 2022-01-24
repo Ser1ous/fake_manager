@@ -396,7 +396,7 @@ class ManagerTheme implements ManagerThemeInterface
         if (is_file(MODX_MANAGER_THEME_PATH . '/media/style/' . $theme . '/' . $filepath)) {
             $element = MODX_MANAGER_THEME_PATH . '/media/style/' . $theme . '/' . $filepath;
         } else {
-            $element = MODX_MANAGER_PATH . ltrim($filepath, '/');
+            $element =  __DIR__ . '/' . ltrim($filepath, '/');
         }
 
         return $element;
@@ -829,7 +829,7 @@ class ManagerTheme implements ManagerThemeInterface
         $css = $this->getThemeUrlAlt() . 'style.css';
         $minCssName = 'css/styles.min.css';
 
-        if (!file_exists($this->getThemeDir() . $minCssName) && is_writable($this->getThemeDir() . 'css')) {
+        if (!file_exists($this->getThemeUrlAlt() . $minCssName) && is_writable($this->getThemeUrlAlt() . 'css')) {
             $files = $this->getCssFiles();
             $evtOut = $this->getCore()->invokeEvent('OnBeforeMinifyCss', array(
                 'files' => $files,
